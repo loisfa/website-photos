@@ -13,24 +13,32 @@ class PhotoBuilder {
   scanFiles() {
 
     fs.readdir(this.directory, (err, files) => {
-      files.forEach(filename => {
-        let extension = this.getExtension(filename);
-      	if (imagesTypes.indexOf(extension)>=0) {
-          let fullPathImage = this.directory+'/'+filename;
-          let fullPathFile = this.replaceExtension(fullPathImage, extension, 'json');
-      		fs.readFile(fullPathFile, 'utf8',  (err, data) => {
-      		  if (err) {
-        			if (err.code === 'ENOENT') {
-        			  console.error(fullPathFile + ' does not exist');
-        			  return;
-        			}
-      			throw err;
-      		  }
-            let properties = JSON.parse(data);
-      		  this.buildPhoto(fullPathImage, properties);
-      		});
-      	}
-      });
+      if (err) {
+        console.error(err);
+      } else if (files===undefined) {
+        console.log("no files found in "+this.directory);
+      }
+      else {
+        files.forEach(filename => {
+          let extension = this.getExtension(filename);
+        	if (imagesTypes.indexOf(extension)>=0) {
+            let fullPathImage = this.directory+'/'+filename;
+            let fullPathFile = this.replaceExtension(fullPathImage, extension, 'json');
+        		fs.readFile(fullPathFile, 'utf8',  (err, data) => {
+        		  if (err) {
+          			if (err.code === 'ENOENT') {
+          			  console.error(fullPathFile + ' does not exist');
+          			  return;
+          			}
+        			throw err;
+        		  }
+              let properties = JSON.parse(data);
+              console.log("fullPathImage: "+fullPathImage);
+        		  this.buildPhoto(fullPathImage, properties);
+        		});
+        	}
+        });
+      }
     });
 
   }

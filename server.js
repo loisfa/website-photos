@@ -12,21 +12,9 @@ let app = express();
 let PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/dist'));
 
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
-app.get('/robots.txt', function (req, res) {
-    res.type('text/plain');
-    res.send("User-agent: *\nDisallow: /");
-});
-
-let directory = __dirname + '/assets/photos';
-//let directory = './assets/photos';
-photoBuilder = new PhotoBuilder(directory);
+let relativeDirectory = './assets/photos';
+photoBuilder = new PhotoBuilder(relativeDirectory);
 photoBuilder.scanFiles();
 // asynchronous method, be careful in the rest of the app
 queryParser = new QueryParser();
@@ -48,9 +36,10 @@ app.get('/api/photos/:photoName', function(req, res) {
   };
   let filename = photo.getImagePath();
   res.sendFile(filename, options, function(err) {
+    console.log("filename to send: "+filename);
     if (err) {
       console.error(err);
-      next("err");
+      // next(err);
     } else {
       console.log("sent photo: "+filename);
     }
@@ -70,7 +59,14 @@ app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
   console.log("sent listPhotoNames: "+listPhotoNames);
 });
 
-
+app.use(express.static(__dirname + '/dist'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+});
 
 app.listen(PORT, function() {
   console.log("Node server listening to port "+PORT);
