@@ -4,7 +4,8 @@ fs          = require('fs'),
 PhotoBuilder = require('./server/photoBuilder'),
 Photo       = require('./server/photo'),
 QueryParser = require('./server/queryParser'),
-SessionHandler = require('./server/sessionHandler');
+SessionHandler = require('./server/sessionHandler'),
+path        = require('path');
 
 
 let app = express();
