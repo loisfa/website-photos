@@ -46,7 +46,7 @@ app.get('/api/photos/:photoName', function(req, res) {
       } else {
         console.log("sent photo: "+filename);
       }
-    });    
+    });
   }
 });
 
