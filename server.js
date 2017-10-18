@@ -28,22 +28,26 @@ app.get('/api/photos/get-photo-names', function(req, res) {
 app.get('/api/photos/:photoName', function(req, res) {
   let photoName = queryParser.parseQuery(req.params.photoName);
   let photo = photoBuilder.getPhoto(photoName);
-  let options = {
-    'root' : __dirname,
-    'headers': {
-      'photoProperties': JSON.stringify(photo.getProperties())
-    }
-  };
-  let filename = photo.getImagePath();
-  res.sendFile(filename, options, function(err) {
-    console.log("filename to send: "+filename);
-    if (err) {
-      console.error(err);
-      // next(err);
-    } else {
-      console.log("sent photo: "+filename);
-    }
-  });
+  if (photo === undefined) {
+    res.send("no photo with this name: "+photoName);
+  } else {
+    let options = {
+      'root' : __dirname,
+      'headers': {
+        'photoProperties': JSON.stringify(photo.getProperties())
+      }
+    };
+    let filename = photo.getImagePath();
+    res.sendFile(filename, options, function(err) {
+      console.log("filename to send: "+filename);
+      if (err) {
+        console.error(err);
+        // next(err);
+      } else {
+        console.log("sent photo: "+filename);
+      }
+    });    
+  }
 });
 
 app.get("/api/vr/web/:listPhotoNames", function(req, res) {
