@@ -11,9 +11,20 @@ let app = express();
 let PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/dist'));
 
-let directory = './assets/photos';
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send("User-agent: *\nDisallow: /");
+});
+
+let directory = __dirname + '/assets/photos';
+//let directory = './assets/photos';
 photoBuilder = new PhotoBuilder(directory);
 photoBuilder.scanFiles();
 // asynchronous method, be careful in the rest of the app
@@ -57,6 +68,8 @@ app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
   res.send({"listPhotoNames": listPhotoNames});
   console.log("sent listPhotoNames: "+listPhotoNames);
 });
+
+
 
 app.listen(PORT, function() {
   console.log("Node server listening to port "+PORT);
