@@ -1,6 +1,39 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-  </h1>
-  <app-photo-thumbnail></app-photo-thumbnail>
+<div class="center"
+style="background-color:white; position:fixed; z-index:1; width:100%;
+border-bottom:1px solid rgba(200,200,200);
+justify-content: center;
+display: flex;">
+  <div class="nav-title">
+    Gallery
+  </div>
+  <div class="nav-title">
+    The photographer
+  </div>
+  <div class="nav-title-heart">
+    Mes coups de 
+    <img style="width:20px;"
+    src="/assets/icons/heart-fill-red.png"/>
+  </div>
+</div>
+
+
+<!--<div class="topnav" style="text-align:center;">
+   <a href="#home">Gallery</a>
+   <a href="#news">The photographer</a>
+   <a href="#contact" style="color:rgba(180,100,100);">Mes coups de
+     <img style="width:20px;"
+     src="/assets/icons/heart-fill-red.png"/>
+   </a>
+</div>-->
+
+
+<div class="wallpaper">
+  <div class="container-fluid" style="padding-top:60px;">
+  	<div class="row">
+      <div class="col-md-3 center" style="padding:0px; margin:0px;"
+        *ngFor="let index of [1,2,3,4,5]">
+        <app-photo-thumbnail></app-photo-thumbnail>
+  		</div>
+  	</div>
+  </div>
 </div>

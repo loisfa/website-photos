@@ -1,1 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+.center {
+  text-align:center;
+}
+
+.inline
+{
+  display: inline-block;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  text-align: center;
+  background-color: white;/*rgb(240,240,240);*/
+  padding-left:20px;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 1;
+  border-bottom:1px solid rgb(200,200,200);
+}
+
+div .nav-title {
+  margin-left:10px;
+  padding: 10px;
+  display: inline;
+  color:gray;
+  font-size: 20px;
+}
+
+div .nav-title-heart {
+  margin-left:10px;
+  padding: 10px;
+  display: inline;
+  color:  rgb(180,80,80);
+  font-size: 20px;
+}
+
+div .nav-title:hover {
+  background-color: rgb(240,240,240);
+  color:rgb(50,50,50);
+  cursor:pointer;
+}
+
+div .nav-title-heart:hover {
+  background-color: rgb(250,240,240);
+  color: rgb(150,50,50);
+  cursor:pointer;
+}
+
+
+
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: inline-block;
+  color: rgb(100,100,120);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: rgb(245,245,245);
+  color: rgb(50,50,50);
+}
+
+/* Add a color to the active/current link
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}*/
+
+.wallpaper {
+  background-image: url("/assets/wallpaper/tile-light-light-light.png");
+}

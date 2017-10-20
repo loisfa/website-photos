@@ -8,8 +8,6 @@ import { Photo } from './photo';
 })
 export class PhotoThumbnailComponent implements OnInit {
 
-  
-
   constructor() { }
 
   ngOnInit() {

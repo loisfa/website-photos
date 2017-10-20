@@ -59,14 +59,15 @@ app.get("/api/vr/web/:listPhotoNames", function(req, res) {
 
 app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
   let listPhotoNames = sessionHandler.getPhotoNames(req.params.vrSessionCode);
-  res.send({"listPhotoNames": listPhotoNames});
   console.log("sent listPhotoNames: "+listPhotoNames);
+  res.send({"listPhotoNames": listPhotoNames});
 });
 
 app.use(express.static(__dirname + '/dist'));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
+
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');
     res.send("User-agent: *\nDisallow: /");
