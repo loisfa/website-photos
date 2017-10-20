@@ -9,6 +9,7 @@ class Photo {
       "price":undefined
     };
     this.setProperties(properties);
+	this.setProperty("uri", imagePath);
   }
 
   setProperties(properties) {
@@ -19,6 +20,10 @@ class Photo {
         console.log(this.imagePath + " has no property " + property);
       }
     }
+  }
+  
+  setProperty(propertyKey, propertyValue) {
+	this.properties[propertyKey] = propertyValue;
   }
 
   getProperties() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Photo } from './photo';
 
 @Component({
@@ -8,9 +8,22 @@ import { Photo } from './photo';
 })
 export class PhotoThumbnailComponent implements OnInit {
 
+  @Input() private imgProperties:string;
+  /*
+  private name:string;
+  private description:string;
+  private width:number;
+  private height:number;
+  private isLandscapeOriented:boolean;
+  private price:number;
+  private isFavorite:boolean;
+  private topics:Array<string>;
+  */
+
   constructor() { }
 
   ngOnInit() {
+    //console.log(this.imgSrc);
   }
 
 }

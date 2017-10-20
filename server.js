@@ -5,12 +5,18 @@ PhotoBuilder = require('./server/photoBuilder'),
 Photo       = require('./server/photo'),
 QueryParser = require('./server/queryParser'),
 SessionHandler = require('./server/sessionHandler'),
-path        = require('path');
+path        = require('path'),
+cors       	= require('cors');
 
 
 let app = express();
 let PORT = process.env.PORT || 8080;
 
+let corsOptions = {
+  origin: 'http://localhost:4200',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors());
 app.use(bodyParser.json());
 
 let relativeDirectory = './assets/photos';
@@ -20,12 +26,25 @@ photoBuilder.scanFiles();
 queryParser = new QueryParser();
 sessionHandler = new SessionHandler();
 
-app.get('/api/photos/get-photo-names', function(req, res) {
+app.get('/api/photos/', function(req, res) {
   res.send(photoBuilder.getPhotoNames());
   console.log("sent the photo names");
 });
 
-app.get('/api/photos/:photoName', function(req, res) {
+app.get("/api/photo/uri/:photoName", function(req, res) {
+  console.log("received get");
+  let photoName = queryParser.parseQuery(req.params.photoName);
+  let photo = photoBuilder.getPhoto(photoName);
+  if (photo === undefined) {
+    res.send("no photo with this name: "+photoName);
+  } else {
+    let photoProperties = photo.getProperties();
+    res.send({"photoProperties":photoProperties});
+  }
+});
+
+
+app.get('/api/photo/:photoName', function(req, res) {
   let photoName = queryParser.parseQuery(req.params.photoName);
   let photo = photoBuilder.getPhoto(photoName);
   if (photo === undefined) {
@@ -50,6 +69,7 @@ app.get('/api/photos/:photoName', function(req, res) {
   }
 });
 
+
 app.get("/api/vr/web/:listPhotoNames", function(req, res) {
   let listPhotoNames = queryParser.convertQueryToList(req.params.listPhotoNames);
   let code = sessionHandler.getCode(listPhotoNames);
@@ -63,9 +83,9 @@ app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
   res.send({"listPhotoNames": listPhotoNames});
 });
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/src'));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, '/src/index.html'));
 });
 
 app.get('/robots.txt', function (req, res) {

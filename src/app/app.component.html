@@ -9,8 +9,8 @@ display: flex;">
   <div class="nav-title">
     The photographer
   </div>
-  <div class="nav-title-heart">
-    Mes coups de 
+  <div class="nav-title">
+    My
     <img style="width:20px;"
     src="/assets/icons/heart-fill-red.png"/>
   </div>
@@ -30,9 +30,10 @@ display: flex;">
 <div class="wallpaper">
   <div class="container-fluid" style="padding-top:60px;">
   	<div class="row">
-      <div class="col-md-3 center" style="padding:0px; margin:0px;"
-        *ngFor="let index of [1,2,3,4,5]">
-        <app-photo-thumbnail></app-photo-thumbnail>
+      <div class="col-xs-6 col-sd-3 col-lg-3 center"
+      style="padding:0px; margin:0px;"
+      *ngFor="let photo of this.listPhotos">
+        <app-photo-thumbnail [imgProperties]="photo.properties"></app-photo-thumbnail>
   		</div>
   	</div>
   </div>
