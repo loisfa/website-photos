@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { APIHandler } from './APIHandler.service';
 import { PhotoModel } from './PhotoModel';
 import { MyObservable } from './interface-observable';
+import { Cookies } from './Cookies.service';
 
 
 @Injectable()
@@ -9,24 +10,23 @@ export class PhotosHandler implements MyObservable {
 
   private listPhotos:Array<PhotoModel>=[];
   private listObservers=[];
+  private listMyFavorites:Array<string>=[];
 
-  constructor(private apiHandler:APIHandler) {
-    //this.listPhotos=null;
+  constructor(private apiHandler:APIHandler, private cookieService:Cookies) {
+    let cookieExists:boolean = this.cookieService.cookieExists("MyFavorites");
     let listPhotoNames;
     this.apiHandler.getAllPhotoNames().subscribe(data => {
       listPhotoNames = data;
       let count:number=0;
       for (let photoName of listPhotoNames) {
         this.apiHandler.getPhoto(photoName).subscribe(data => {
-          console.log("data.photoProperties");
-          console.log(data.photoProperties);
-          let photo = new PhotoModel(data.photoProperties);
+          let photo:PhotoModel = new PhotoModel(data.photoProperties, this.cookieService);
+          if (cookieExists && this.cookieService.isFavorite(photoName)) {
+            photo.setFavorite();
+          }
           this.listPhotos.push(photo);
-          console.log(this.listPhotos);
           count++;
           if (count >= listPhotoNames.length) {
-            console.log(count);
-            console.log(listPhotoNames.length);
             this.notifyObservers();
           }
         })

@@ -18,7 +18,6 @@ export class PhotoThumbnailComponent implements OnInit {
   ngOnInit() {}
 
   public clickedFavorite():void {
-    console.log("clicked favorite for "+this.imgProperties["name"]);
     this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
     this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
   }

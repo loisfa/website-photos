@@ -20,9 +20,7 @@ export class APIHandler {
 
   public getAllPhotoNames():Observable<Array<string>> {
 
-    console.log("in get all photo names");
     let photoNames:string;
-    console.log("url: "+this.urlAllPhotoNames);
     return this.http.get(this.urlAllPhotoNames)
       .map(res => {
         return res;
@@ -30,17 +28,14 @@ export class APIHandler {
       .catch(error => Observable.throw(error));
   }
 
-
   public getPhoto(unparsedName:string):Observable<any> {
     let photoName:string = this.parse(unparsedName);
     let url:string = this.urlPhoto + photoName;
     let image:any[];
-    console.log("hey on url:"+url);
     return this.http.get(url)
       .map(res => { return res; })
       .catch(error => Observable.throw(error));
     }
-
 
   private parse(unparsedString:string):string {
     let re = " ";

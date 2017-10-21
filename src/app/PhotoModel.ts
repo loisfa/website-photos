@@ -1,3 +1,5 @@
+import { Cookies } from './Cookies.service';
+
 export class PhotoModel {
 
   private properties:Object =
@@ -15,6 +17,9 @@ export class PhotoModel {
     "isFavorite":false
   };
 
+  constructor(properties:Object, private cookieService:Cookies) {
+    this.setProperties(properties);
+  }
 
   public changeFavorite() {
     if (this.isFavorite()==true) {
@@ -23,18 +28,14 @@ export class PhotoModel {
       this.setFavorite();
     }
   }
-  private unsetFavorite() {
+  public unsetFavorite() {
     this.properties["isFavorite"]=false;
+    this.cookieService.unsetFavorite(this.getName());
   }
-  private setFavorite() {
+  public setFavorite() {
     this.properties["isFavorite"]=true;
-  }
+    this.cookieService.setFavorite(this.getName());
 
-  constructor(properties:Object) {
-    console.log("properties");
-    console.log(properties);
-    this.setProperties(properties);
-    console.log(this.properties);
   }
 
   public getName() {

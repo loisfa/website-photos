@@ -16,9 +16,6 @@ export class AppComponent  implements MyObserver {
   }
 
   public receiveNotification():void {
-    console.log("module received notification");
     this.listPhotos = this.photosHandler.getPhotos();
-    console.log("this.listPhotos");
-    console.log(this.listPhotos);
   }
 }

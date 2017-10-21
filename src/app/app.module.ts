@@ -11,13 +11,15 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ArtistComponent } from './artist/artist.component';
 import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { CookieService } from 'ngx-cookie-service';
+import { Cookies } from "./Cookies.service";
 
 
 const appRoutes: Routes = [
-  { path: 'gallery', component: GalleryComponent },
-  { path: 'artist', component: ArtistComponent },
-  { path: 'my-favorites', component: MyFavoritesComponent },
-  { path: '*', component: GalleryComponent }
+  { path: 'gallery', component: GalleryComponent, data: {"route":"/gallery"}},
+  { path: 'artist', component: ArtistComponent,  data: {"route":"/artist"}},
+  { path: 'my-favorites', component: MyFavoritesComponent,  data: {"route":"/my-favorites"}},
+  { path: '**', component: GalleryComponent,  data: {"route":"/gallery"}}
 ];
 
 @NgModule({
@@ -37,7 +39,7 @@ const appRoutes: Routes = [
       appRoutes,
     ),
   ],
-  providers: [PhotosHandler, APIHandler, HttpClient],
+  providers: [PhotosHandler, APIHandler, HttpClient, CookieService, Cookies],
   bootstrap: [AppComponent]
 })
 

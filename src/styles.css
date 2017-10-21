@@ -31,13 +31,13 @@ div .nav-title {
   padding-bottom:0px;
 }
 div .nav-title:hover {
-  border-bottom:4px solid rgb(200,200,200);
-  color:rgb(50,50,50);
+  color:rgb(100,150,200);
+  border-bottom:4px solid rgb(180,200,220);
   cursor:pointer;
 }
 div .section-on {
-  color:rgb(50,50,50);
-  border-bottom:4px solid rgb(200,200,200);
+  color:rgb(50,150,250);
+  border-bottom:4px solid rgb(150,200,250);
 }
 div .section-off {
   color:gray;

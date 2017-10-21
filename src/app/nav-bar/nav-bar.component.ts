@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,9 +10,7 @@ export class NavBarComponent implements OnInit {
 
   @Input() listSections:Array<Object>=[];
 
-  constructor() {
-
-  }
+  constructor(private route:ActivatedRoute) {}
 
   ngOnInit() {
     let galleryObject:Object= {
@@ -32,15 +31,12 @@ export class NavBarComponent implements OnInit {
       "imgUri":"/assets/icons/heart-fill-red.png",
       "class":"nav-title section-off"
     };
-    this.listSections.push(artistObject);
     this.listSections.push(galleryObject);
     this.listSections.push(myFavoritesObject);
-    console.log(this.listSections);
+    this.listSections.push(artistObject);
   }
 
-  onClickSection(sectionLinkRouter:string):void {
-    console.log("sectionlinkRouter");
-    console.log(sectionLinkRouter);
+  public setActivatedSection(sectionLinkRouter:string):void {
 
     for(let section of this.listSections) {
       if (sectionLinkRouter===section["routerLink"]) {
