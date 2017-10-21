@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
       "routerLink":"/gallery",
       "text":"Gallery",
       "imgUri":undefined,
-      "class":"nav-title section-on"
+      "class":"nav-title section-off"
     };
     let artistObject:Object= {
       "routerLink":"/artist",
@@ -32,8 +32,8 @@ export class NavBarComponent implements OnInit {
       "imgUri":"/assets/icons/heart-fill-red.png",
       "class":"nav-title section-off"
     };
-    this.listSections.push(galleryObject);
     this.listSections.push(artistObject);
+    this.listSections.push(galleryObject);
     this.listSections.push(myFavoritesObject);
     console.log(this.listSections);
   }
