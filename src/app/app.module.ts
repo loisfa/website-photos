@@ -6,20 +6,39 @@ import { PhotoThumbnailComponent } from './photo-thumbnail/photo-thumbnail.compo
 import { PhotosHandler } from './PhotosHandler.service';
 import { APIHandler } from './APIHandler.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ArtistComponent } from './artist/artist.component';
+import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+
+
+const appRoutes: Routes = [
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'artist', component: ArtistComponent },
+  { path: 'my-favorites', component: MyFavoritesComponent },
+  { path: '*', component: GalleryComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotoThumbnailComponent
+    PhotoThumbnailComponent,
+    NavBarComponent,
+    GalleryComponent,
+    ArtistComponent,
+    MyFavoritesComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+    ),
   ],
   providers: [PhotosHandler, APIHandler, HttpClient],
   bootstrap: [AppComponent]
 })
-export class AppModule {
 
-}
+export class AppModule {}

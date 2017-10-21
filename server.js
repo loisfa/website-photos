@@ -69,7 +69,6 @@ app.get('/api/photo/:photoName', function(req, res) {
   }
 });
 
-
 app.get("/api/vr/web/:listPhotoNames", function(req, res) {
   let listPhotoNames = queryParser.convertQueryToList(req.params.listPhotoNames);
   let code = sessionHandler.getCode(listPhotoNames);
@@ -84,9 +83,9 @@ app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
 });
 
 app.use(express.static(__dirname + '/src'));
-app.get('*', (req, res) => {
+/*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/src/index.html'));
-});
+});*/
 
 app.get('/robots.txt', function (req, res) {
     res.type('text/plain');

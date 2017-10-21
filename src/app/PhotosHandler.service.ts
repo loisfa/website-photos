@@ -7,7 +7,7 @@ import { MyObservable } from './interface-observable';
 @Injectable()
 export class PhotosHandler implements MyObservable {
 
-  private listPhotos:Array<Object>=[];
+  private listPhotos:Array<PhotoModel>=[];
   private listObservers=[];
 
   constructor(private apiHandler:APIHandler) {
@@ -43,7 +43,16 @@ export class PhotosHandler implements MyObservable {
     }
   }
 
-  public getPhotos():Array<Object> {
+  public getPhotos():Array<PhotoModel> {
     return this.listPhotos;
+  }
+  public getPhoto(photoName:string):PhotoModel {
+    let photo;
+    for(let index in this.listPhotos) {
+      if (this.listPhotos[index].getName() == photoName) {
+        return this.listPhotos[index];
+      }
+    }
+    return undefined;
   }
 }

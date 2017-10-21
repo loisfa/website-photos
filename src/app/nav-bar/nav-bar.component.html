@@ -1,0 +1,12 @@
+<div class="center"
+style="background-color:white; position:fixed; z-index:1; width:100%;
+border-bottom:1px solid rgba(200,200,200);
+justify-content: center; display: flex;">
+    <div *ngFor="let section of this.listSections"
+    [routerLink]="section['routerLink']" [ngClass]="section['class']"
+    (click)="onClickSection(section['routerLink'])">
+      {{section["text"]}}
+      <img *ngIf="section['imgUri']!==undefined"
+      [src]="section['imgUri']" style="width:20px;" >
+    </div>
+</div>

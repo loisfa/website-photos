@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Photo } from './photo';
+import { PhotosHandler } from '../PhotosHandler.service'
+import { PhotoModel } from '../PhotoModel';
 
 @Component({
   selector: 'app-photo-thumbnail',
@@ -8,22 +9,18 @@ import { Photo } from './photo';
 })
 export class PhotoThumbnailComponent implements OnInit {
 
-  @Input() private imgProperties:string;
-  /*
-  private name:string;
-  private description:string;
-  private width:number;
-  private height:number;
-  private isLandscapeOriented:boolean;
-  private price:number;
-  private isFavorite:boolean;
-  private topics:Array<string>;
-  */
+  @Input() private imgProperties:Object;
+  @Input() private heartUri:string;
+  @Input() private src:string;
 
-  constructor() { }
+  constructor(private photosHandler:PhotosHandler) { }
 
-  ngOnInit() {
-    //console.log(this.imgSrc);
+  ngOnInit() {}
+
+  public clickedFavorite():void {
+    console.log("clicked favorite for "+this.imgProperties["name"]);
+    this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
+    this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
   }
 
 }

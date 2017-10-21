@@ -7,7 +7,7 @@ import { MyObserver } from './interface-observer';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements MyObserver {
+export class AppComponent  implements MyObserver {
   private title = 'app';
   private listPhotos:Array<Object>=[];
 

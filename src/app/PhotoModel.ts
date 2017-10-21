@@ -12,8 +12,23 @@ export class PhotoModel {
     },
     "description":null,
     "topics":[],
-    "isFavorite":null
+    "isFavorite":false
   };
+
+
+  public changeFavorite() {
+    if (this.isFavorite()==true) {
+      this.unsetFavorite();
+    } else {
+      this.setFavorite();
+    }
+  }
+  private unsetFavorite() {
+    this.properties["isFavorite"]=false;
+  }
+  private setFavorite() {
+    this.properties["isFavorite"]=true;
+  }
 
   constructor(properties:Object) {
     console.log("properties");
@@ -42,6 +57,9 @@ export class PhotoModel {
   }
   public isFavorite() {
     return this.properties["isFavorite"];
+  }
+  public getProperties():Object {
+    return this.properties;
   }
 
   private checkPropertiesOk(properties:Object):boolean {

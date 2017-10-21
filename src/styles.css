@@ -21,41 +21,28 @@
   border-bottom:1px solid rgb(200,200,200);
 }
 
+
+
 div .nav-title {
   margin-left:10px;
   padding: 10px;
   display: inline;
-  color:gray;
   font-size: 22px;
-
   padding-bottom:0px;
-  border-bottom:4px solid rgb(235,235,235);
 }
-
-
 div .nav-title:hover {
   border-bottom:4px solid rgb(200,200,200);
   color:rgb(50,50,50);
   cursor:pointer;
 }
-
-/*
-div .nav-title-heart {
-  margin-left:10px;
-  padding: 10px;
-  display: inline;
-  color: rgb(180,80,80);
-  font-size: 20px;
-
-  padding-bottom:0px;
-  border-bottom:5px solid rgb(250,230,230);
+div .section-on {
+  color:rgb(50,50,50);
+  border-bottom:4px solid rgb(200,200,200);
 }
-div .nav-title-heart:hover {
-  border-bottom:5px solid rgb(240,210,210);
-  color: rgb(150,50,50);
-  cursor:pointer;
+div .section-off {
+  color:gray;
+  border-bottom:4px solid rgb(235,235,235);
 }
-*/
 
 
 .image-zoom {
@@ -77,10 +64,23 @@ div .nav-title-heart:hover {
    transform:scale(1.05);
 }
 
-@media screen and (min-width: 480px) {
-    {
-        background-color: lightgreen;
-    }
+.image-zoom-high {
+  max-height:180px;
+  max-width:100%;
+  cursor:pointer;
+  -webkit-transition: all 0.2s ease; /* Safari and Chrome */
+  -moz-transition: all 0.2s ease; /* Firefox */
+  -ms-transition: all 0.2s ease; /* IE 9 */
+  -o-transition: all 0.2s ease; /* Opera */
+  transition: all 0.2s ease;
+}
+
+.image-zoom-high:hover {
+  -webkit-transform:scale(1.2); /* Safari and Chrome */
+  -moz-transform:scale(1.2); /* Firefox */
+  -ms-transform:scale(1.2); /* IE 9 */
+  -o-transform:scale(1.2); /* Opera */
+   transform:scale(1.2);
 }
 
 .wallpaper {
