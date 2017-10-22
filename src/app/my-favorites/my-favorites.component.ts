@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotosHandler } from '../PhotosHandler.service';
 
 @Component({
   selector: 'app-my-favorites',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyFavoritesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private photosHandler:PhotosHandler) { }
 
   ngOnInit() {
+    console.log("this.photosHandler.getFavoritePhotos()");
+    console.log(this.photosHandler.getFavoritePhotos());
   }
 
 }

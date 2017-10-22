@@ -8,8 +8,6 @@ import { PhotosHandler } from '../PhotosHandler.service';
 })
 export class GalleryComponent implements OnInit {
 
-  // @Input() private listPhotos:Array<Object>;
-
   constructor(private photosHandler:PhotosHandler) { }
 
   ngOnInit() {

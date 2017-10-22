@@ -10,7 +10,6 @@ export class PhotosHandler implements MyObservable {
 
   private listPhotos:Array<PhotoModel>=[];
   private listObservers=[];
-  private listMyFavorites:Array<string>=[];
 
   constructor(private apiHandler:APIHandler, private cookieService:Cookies) {
     let cookieExists:boolean = this.cookieService.cookieExists("MyFavorites");
@@ -45,6 +44,18 @@ export class PhotosHandler implements MyObservable {
 
   public getPhotos():Array<PhotoModel> {
     return this.listPhotos;
+  }
+  public getFavoritePhotos():Array<PhotoModel> {
+    let listFavoritePhotos:Array<PhotoModel>=[];
+    for(let photo of this.listPhotos) {
+      if (photo.isFavorite()) {
+        console.log(photo.getName()+" in favorite");
+        listFavoritePhotos.push(photo);
+      } else {
+        console.log(photo.getName()+" not in favorite");
+      }
+    }
+    return listFavoritePhotos;
   }
   public getPhoto(photoName:string):PhotoModel {
     let photo;

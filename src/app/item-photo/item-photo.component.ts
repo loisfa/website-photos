@@ -4,30 +4,30 @@ import { PhotoModel } from '../PhotoModel';
 import { ModalPhotoComponent } from '../modal-photo/modal-photo.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
-  selector: 'app-photo-thumbnail',
-  templateUrl: './photo-thumbnail.component.html',
-  styleUrls: ['./photo-thumbnail.component.css']
+  selector: 'app-item-photo',
+  templateUrl: './item-photo.component.html',
+  styleUrls: ['./item-photo.component.css']
 })
-export class PhotoThumbnailComponent implements OnInit {
+export class ItemPhotoComponent implements OnInit {
 
   @Input() private imgProperties:Object;
-  
+
   constructor(
     private photosHandler:PhotosHandler,
     private modalService: NgbModal) { }
 
-  ngOnInit() {}
-
-  public clickedFavorite():void {
-    this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
-    this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
+  ngOnInit() {
   }
 
   public clickedPhoto():void {
     const modalRef = this.modalService.open(ModalPhotoComponent);
     modalRef.componentInstance.imgProperties = this.imgProperties;
+  }
+  
+  public clickedFavorite():void {
+    this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
+    this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
   }
 
 }
