@@ -2,7 +2,9 @@
 padding-top:20px; padding-left:20px; padding-right:20px; margin:5px;"
 class="inline">
   <div class="center">
-      <img class="image-zoom" style="border-radius:3px;"
+      <img class="image-zoom"
+      (click)="clickedPhoto(imgProperties.name)"
+      style="border-radius:3px;"
       src={{imgProperties.uri}}/>
   </div>
 

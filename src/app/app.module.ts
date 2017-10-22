@@ -13,6 +13,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
 import { CookieService } from 'ngx-cookie-service';
 import { Cookies } from "./Cookies.service";
+import { ModalPhotoComponent } from './modal-photo/modal-photo.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     NavBarComponent,
     GalleryComponent,
     ArtistComponent,
-    MyFavoritesComponent
+    MyFavoritesComponent,
+    ModalPhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,10 @@ const appRoutes: Routes = [
     ),
   ],
   providers: [PhotosHandler, APIHandler, HttpClient, CookieService, Cookies],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalPhotoComponent
+  ]
 })
 
 export class AppModule {}

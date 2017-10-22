@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    {{imgProperties.name}}
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="center" class="modal-body">
+  <div class="center">
+    <img [src]="imgProperties.uri" style="max-width:100%; max-height:400px;"/>
+  </div>
+  <div class="center" style="padding-top:10px;padding-bottom:0px;">
+    <img class="image-zoom-high"
+    style="width:40px; cursor:pointer;"
+    (click)="clickedFavorite()"
+    src="{{imgProperties.isFavorite
+      ?'/assets/icons/heart-fill-red.png'
+      :'/assets/icons/heart-gray.png'}}"/>
+  </div>
+  <hr style="margin-top:5px; margin-bottom:5px;">
+  <div >
+    Price: {{imgProperties.price}}€ <br>
+    Dimensions: {{imgProperties.dimensions.width}} x {{imgProperties.dimensions.height}} cm <br>
+    <div *ngIf="imgProperties.description!=undefined">
+      Description: {{imgProperties.description}} <br>
+    </div>
+  </div>
+</div>
