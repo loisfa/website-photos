@@ -1,5 +1,6 @@
 <div class="center"
 style="background-color:white; position:fixed; z-index:1; width:100%;
+
 border-bottom:1px solid rgba(200,200,200);
 justify-content: center; display: flex;">
   <div *ngFor="let section of this.listSections"
@@ -8,5 +9,8 @@ justify-content: center; display: flex;">
     {{section["text"]}}
     <img *ngIf="section['imgUri']!==undefined"
     [src]="section['imgUri']" style="width:20px;" >
+    <span style="font-size:14px" *ngIf="section['routerLink']==='my-favorites'">
+      ({{this.photosHandler.getFavoritePhotos().length}})
+    </span>
   </div>
 </div>

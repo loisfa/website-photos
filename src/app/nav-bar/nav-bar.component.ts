@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PhotosHandler } from '../PhotosHandler.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,8 @@ export class NavBarComponent implements OnInit {
 
   @Input() listSections:Array<Object>=[];
 
-  constructor(private route:ActivatedRoute) {}
+  constructor(private route:ActivatedRoute,
+    private photosHandler:PhotosHandler) {}
 
   ngOnInit() {
     let galleryObject:Object= {

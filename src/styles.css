@@ -90,6 +90,21 @@ div .section-off {
    transform:scale(1.2);
 }
 
+
 .wallpaper {
   background-image: url("/assets/wallpaper/tile-light-light-light.png");
+  background-repeat: repeat;
+}
+
+
+.ar-image {
+  background-image: url("/assets/images/augmented-reality-2.jpg");
+
+  /* Full height */
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
