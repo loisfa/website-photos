@@ -15,6 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Cookies } from "./Cookies.service";
 import { ModalPhotoComponent } from './modal-photo/modal-photo.component';
 import { ItemPhotoComponent } from './item-photo/item-photo.component';
+import { ArSeeHomeComponent } from './ar-see-home/ar-see-home.component';
 
 
 const appRoutes: Routes = [
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     ArtistComponent,
     MyFavoritesComponent,
     ModalPhotoComponent,
-    ItemPhotoComponent
+    ItemPhotoComponent,
+    ArSeeHomeComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,13 @@
   display: inline-block;
 }
 
+.item-photo {
+  background-color: white;
+}
+.item-photo:hover {
+  background-color: rgb(245,245,245);
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   text-align: center;

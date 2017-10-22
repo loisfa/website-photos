@@ -3,6 +3,8 @@ import { PhotosHandler } from '../PhotosHandler.service'
 import { PhotoModel } from '../PhotoModel';
 import { ModalPhotoComponent } from '../modal-photo/modal-photo.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-item-photo',
@@ -15,7 +17,8 @@ export class ItemPhotoComponent implements OnInit {
 
   constructor(
     private photosHandler:PhotosHandler,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private route:ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -24,7 +27,7 @@ export class ItemPhotoComponent implements OnInit {
     const modalRef = this.modalService.open(ModalPhotoComponent);
     modalRef.componentInstance.imgProperties = this.imgProperties;
   }
-  
+
   public clickedFavorite():void {
     this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
     this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();

@@ -14,19 +14,19 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     let galleryObject:Object= {
-      "routerLink":"/gallery",
+      "routerLink":"gallery",
       "text":"Gallery",
       "imgUri":undefined,
       "class":"nav-title section-off"
     };
     let artistObject:Object= {
-      "routerLink":"/artist",
+      "routerLink":"artist",
       "text":"The photographer",
       "imgUri":undefined,
       "class":"nav-title section-off"
     };
     let myFavoritesObject:Object= {
-      "routerLink":"/my-favorites",
+      "routerLink":"my-favorites",
       "text":"My ",
       "imgUri":"/assets/icons/heart-fill-red.png",
       "class":"nav-title section-off"
