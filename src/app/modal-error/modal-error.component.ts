@@ -10,10 +10,14 @@ export class ModalErrorComponent implements OnInit {
 
   @Input() public errorMessage:Object={};
 
-  constructor() { }
+  constructor(
+    public activeModal:NgbActiveModal // should be private, but AOT compilation fails when private
+  ) { }
 
   ngOnInit() {
   }
 
-
+  public clickedClose() {
+    this.activeModal.dismiss('Cross click');
+  }
 }

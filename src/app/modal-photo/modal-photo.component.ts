@@ -11,8 +11,10 @@ export class ModalPhotoComponent implements OnInit {
 
   @Input() public imgProperties:Object={};
 
-  constructor(public activeModal: NgbActiveModal,
-    private photosHandler:PhotosHandler) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    public photosHandler:PhotosHandler // should be private, but AOT compilation fails when private  
+  ) { }
 
   ngOnInit() {
   }

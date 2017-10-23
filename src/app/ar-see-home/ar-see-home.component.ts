@@ -12,7 +12,7 @@ import { ModalErrorComponent } from '../modal-error/modal-error.component';
 })
 export class ArSeeHomeComponent implements OnInit {
 
-  @Input() private code:string;
+  @Input() public code:string; // should be private, but AOT compilation fails when private  
 
   constructor(
     private photosHandler:PhotosHandler,

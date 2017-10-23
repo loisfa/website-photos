@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ItemPhotoComponent implements OnInit {
 
-  @Input() private imgProperties:Object;
+  @Input() public imgProperties:Object;  // should be private, but AOT compilation fails when private
 
   constructor(
-    private photosHandler:PhotosHandler,
-    private modalService: NgbModal,
-    private route:ActivatedRoute) { }
+    public photosHandler:PhotosHandler, // should be private, but AOT compilation fails when private
+    public modalService: NgbModal, // should be private, but AOT compilation fails when private
+    public route:ActivatedRoute // should be private, but AOT compilation fails when private
+  ) { }
 
   ngOnInit() {
   }

@@ -12,8 +12,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PhotoThumbnailComponent implements OnInit {
 
-  @Input() private imgProperties:Object;
-  
+  @Input() public imgProperties:Object;  // should be private, but AOT compilation fails when private  
+
   constructor(
     private photosHandler:PhotosHandler,
     private modalService: NgbModal) { }

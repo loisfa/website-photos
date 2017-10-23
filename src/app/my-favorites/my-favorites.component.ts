@@ -8,7 +8,9 @@ import { PhotosHandler } from '../PhotosHandler.service';
 })
 export class MyFavoritesComponent implements OnInit {
 
-  constructor(private photosHandler:PhotosHandler) { }
+  constructor(
+    public photosHandler:PhotosHandler  // should be private, but AOT compilation fails when private  
+  ) { }
 
   ngOnInit() {
     console.log("this.photosHandler.getFavoritePhotos()");

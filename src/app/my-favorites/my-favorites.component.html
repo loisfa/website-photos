@@ -6,7 +6,7 @@
     </h5>
     <div class="inline" *ngFor="let photo of this.photosHandler.getFavoritePhotos()">
       <app-item-photo
-        [imgProperties]="photo.properties">
+        [imgProperties]="photo['properties']">
       </app-item-photo>
     </div>
     <div [routerLink]="'gallery'" class="inline btn btn-primary"

@@ -3,13 +3,13 @@ padding-top:20px; padding-left:20px; padding-right:20px; margin:5px;"
 class="inline">
   <div class="center">
       <img class="image-zoom"
-      (click)="clickedPhoto(imgProperties.name)"
+      (click)="clickedPhoto(imgProperties['name'])"
       style="border-radius:3px;"
-      src={{imgProperties.uri}}/>
+      src="{{imgProperties['uri']}}"/>
   </div>
 
    <h5 align="left" style="padding-top:10px;padding-bottom:3px;">
-     {{imgProperties.name}}
+     {{imgProperties["name"]}}
    </h5>
 
    <div align="left" style="padding-left:0px;">
@@ -17,16 +17,16 @@ class="inline">
       <img class="image-zoom-high"
       style="width:40px; cursor:pointer;"
       (click)="clickedFavorite()"
-      src="{{imgProperties.isFavorite
+      src="{{imgProperties['isFavorite']
         ?'/assets/icons/heart-fill-red.png'
         :'/assets/icons/heart-gray.png'}}"/>
           <!--onmouseover="this.src='/assets/icons/heart-red.png'"-->
     </div>
     <div class="inline" style="color:gray; margin:0px; padding:0px;margin-left:10px;">
       <p>
-        {{imgProperties.dimensions.width}}x{{imgProperties.dimensions.height}}cm
+        {{imgProperties["dimensions"]["width"]}}x{{imgProperties["dimensions"]["height"]}}cm
         -
-        {{imgProperties.price}}€
+        {{imgProperties["price"]}}€
       </p>
     </div>
    </div>

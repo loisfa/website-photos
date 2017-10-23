@@ -9,7 +9,7 @@ import { PhotosHandler } from '../PhotosHandler.service';
 })
 export class NavBarComponent implements OnInit {
 
-  @Input() listSections:Array<Object>=[];
+  @Input() public listSections:Array<Object>=[];  // should be private, but AOT compilation fails when private  
 
   constructor(private route:ActivatedRoute,
     private photosHandler:PhotosHandler) {}
