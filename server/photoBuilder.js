@@ -5,8 +5,8 @@ const imagesTypes = ['png', 'jpg', 'jpeg'];
 class PhotoBuilder {
 
   constructor(baseDir, directory) {
-    this.baseDir = baseDir;
-    this.directory = '.' + baseDir + directory;
+    this.baseDir = '.'+baseDir;
+    this.directory =  baseDir + directory;
     this.listPhotos = {};
     this.listPhotoNames = [];
   }
