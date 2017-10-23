@@ -3,12 +3,12 @@ import { ResponseContentType } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { PhotoModel } from './PhotoModel';
-
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class APIHandler {
 
-  private urlBase = "http://localhost:8080/";
+  private urlBase = environment.url;
   private routeAllPhotoNames:string="api/photos/";
   private routePhotoUri:string="api/photo/uri/";
   private routeARCode:string="api/ar/web/";
@@ -17,6 +17,7 @@ export class APIHandler {
   private urlARCode:string;
 
   constructor(private http: HttpClient) {
+    console.log("env url: "+this.urlBase);
     this.urlAllPhotoNames = this.urlBase + this.routeAllPhotoNames;
     this.urlPhoto = this.urlBase + this.routePhotoUri;
     this.urlARCode = this.urlBase + this.routeARCode;
