@@ -1,5 +1,5 @@
 <br>
-<div class="center ar-image" style="border-top:3px solid rgb(100,100,100)">
+<div class="center ar-image" style="border-top:1px solid rgb(150,150,150)">
   <br>
   <div>
     <button class="btn" style="color:rgba(150,50,20); border-radius:0px; padding:5px; padding-bottom:0px;">
@@ -15,7 +15,7 @@
     </button>
   </div>
   <br>
-  <button class="btn btn-danger" style="border-radius:200px; padding-bottom:0px;">
+  <button class="btn btn-danger" style="border-radius:200px; padding-bottom:0px; cursor:pointer;">
     <h5>
       <img src="/assets/icons/play.png" style="width:28px;"/> Watch our DEMO !
     </h5>
@@ -27,14 +27,15 @@
         <div style="border:1px solid rgb(200,200,200); border-radius:3px;margin:5px;
           padding:10px;background-color:rgb(250,250,250)">
           <h5>
-            Step 1
+            <b>Step 1</b>
           </h5>
+          <hr>
           <p align="left">
             > Download the Android app on your spartphone
           </p>
-          <button class="btn btn-success">
-            download the app
-          </button>
+          <a class="btn btn-success" target="_self" href="/assets/apk/try-unity.apk" download="photo-app.apk">
+            download the app <img src="/assets/icons/android-white.png" style="width:24px;"/>
+          </a>
           <br><br>
           <p align="left">
             > Open the Android app
@@ -45,17 +46,19 @@
         <div style="border:1px solid rgb(200,200,200); border-radius:3px;margin:5px;
           padding:10px;background-color:rgb(250,250,250)">
           <h5>
-            Step 2
+            <b>Step 2</b>
           </h5>
+          <hr>
           <p align="left">
             > Print the following marker on an A4 paper
           </p>
-          <button class="btn btn-success">
-            dowload .pdf marker
-          </button>
+          <a class="btn btn-success" target="_self"
+          href="/assets/pdf/marker_stones_height20cm.pdf" download="marker.pdf">
+            dowload .pdf marker <img src="/assets/icons/pdf-white.png" style="width:24px;"/>
+          </a>
           <br><br>
           <p align="left">
-            > Fix it on your wall
+            > Fix the printed marker on your wall
           </p>
         </div>
       </div>
@@ -63,23 +66,25 @@
         <div style="border:1px solid rgb(200,200,200); border-radius:3px;margin:5px;
           padding:10px;background-color:rgb(250,250,250)">
           <h5>
-            Step 3
+            <b>Step 3</b>
           </h5>
+          <hr>
           <p align="left">
             > Generate a CODE*<br>
             <span style="color:rgb(160,160,160); font-size:16px;">
-              *whenever you modify your <img style="height:12px" src="./assets/icons/heart-fill-red.png">.
+              *whenever you modify your <img style="height:12px" src="./assets/icons/heart-fill-red.png"><br>
+              *available 1 hour's time
             </span>
           </p>
-          <button class="btn btn-info">
-            Generate CODE <br>
+          <button class="btn btn-info" style="cursor:pointer;" (click)="clickedGenerateCode()">
+            Generate CODE<br>
           </button>
           <br><br>
           <p align="left">
-             > Type the CODE <b>2909</b> on the Android app
+             > Type the CODE <b>{{this.code}}</b> on the Android app
           </p>
           <p align="left">
-            > Whatch your printed A4 paper and you should see your favorite on it !
+            > That's it !
           </p>
         </div>
       </div>

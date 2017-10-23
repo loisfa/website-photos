@@ -16,6 +16,7 @@ import { Cookies } from "./Cookies.service";
 import { ModalPhotoComponent } from './modal-photo/modal-photo.component';
 import { ItemPhotoComponent } from './item-photo/item-photo.component';
 import { ArSeeHomeComponent } from './ar-see-home/ar-see-home.component';
+import { ModalErrorComponent } from './modal-error/modal-error.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     MyFavoritesComponent,
     ModalPhotoComponent,
     ItemPhotoComponent,
-    ArSeeHomeComponent
+    ArSeeHomeComponent,
+    ModalErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
   providers: [PhotosHandler, APIHandler, HttpClient, CookieService, Cookies],
   bootstrap: [AppComponent],
   entryComponents: [
-    ModalPhotoComponent
+    ModalPhotoComponent,
+    ModalErrorComponent
   ]
 })
 

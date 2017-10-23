@@ -73,7 +73,7 @@ export class PhotoModel {
     }
     for (let property in this.properties) {
       if (properties[property]===undefined) {
-        console.log("WARN property: "+property+" is undefined");
+        //console.log("WARN property: "+property+" is undefined");
       }
     }
     return isOk;

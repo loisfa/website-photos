@@ -3,6 +3,7 @@ import { APIHandler } from './APIHandler.service';
 import { PhotoModel } from './PhotoModel';
 import { MyObservable } from './interface-observable';
 import { Cookies } from './Cookies.service';
+import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
@@ -33,6 +34,11 @@ export class PhotosHandler implements MyObservable {
     });
   }
 
+  public generateCode():Observable<string> {
+    console.log("photos Handler asked code");
+    return this.apiHandler.getCode(this.listPhotos);
+  }
+
   public addObserver(observer:any) {
     this.listObservers.push(observer);
   }
@@ -49,10 +55,8 @@ export class PhotosHandler implements MyObservable {
     let listFavoritePhotos:Array<PhotoModel>=[];
     for(let photo of this.listPhotos) {
       if (photo.isFavorite()) {
-        console.log(photo.getName()+" in favorite");
         listFavoritePhotos.push(photo);
       } else {
-        console.log(photo.getName()+" not in favorite");
       }
     }
     return listFavoritePhotos;

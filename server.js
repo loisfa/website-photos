@@ -32,7 +32,6 @@ app.get('/api/photos/', function(req, res) {
 });
 
 app.get("/api/photo/uri/:photoName", function(req, res) {
-  console.log("received get");
   let photoName = queryParser.parseQuery(req.params.photoName);
   let photo = photoBuilder.getPhoto(photoName);
   if (photo === undefined) {
@@ -69,15 +68,15 @@ app.get('/api/photo/:photoName', function(req, res) {
   }
 });
 
-app.get("/api/vr/web/:listPhotoNames", function(req, res) {
+app.get("/api/ar/web/:listPhotoNames", function(req, res) {
   let listPhotoNames = queryParser.convertQueryToList(req.params.listPhotoNames);
   let code = sessionHandler.getCode(listPhotoNames);
   console.log("response code: "+code);
-  res.send({"vrSessionCode": code});
+  res.send({"arSessionCode": code});
 });
 
-app.get("/api/vr/smartphone/:vrSessionCode", function(req, res) {
-  let listPhotoNames = sessionHandler.getPhotoNames(req.params.vrSessionCode);
+app.get("/api/ar/smartphone/:arSessionCode", function(req, res) {
+  let listPhotoNames = sessionHandler.getPhotoNames(req.params.arSessionCode);
   console.log("sent listPhotoNames: "+listPhotoNames);
   res.send({"listPhotoNames": listPhotoNames});
 });
