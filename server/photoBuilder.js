@@ -14,7 +14,9 @@ class PhotoBuilder {
   scanFiles() {
 
     fs.readdir(this.directory, (err, files) => {
+      console.log("scanning directory: "+this.directory);
       if (err) {
+        console.log("err:");
         console.error(err);
       } else if (files===undefined) {
         console.log("no files found in "+this.directory);
