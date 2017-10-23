@@ -50,14 +50,15 @@ app.get('/api/photo/:photoName', function(req, res) {
     res.send("no photo with this name: "+photoName);
   } else {
     let options = {
-      'root' : __dirname,
-      'headers': {
-        'photoProperties': JSON.stringify(photo.getProperties())
+      "root" : __dirname,
+      "headers": {
+        "photoProperties": JSON.stringify(photo.getProperties())
       }
-    };
+	};
     let filename = photo.getImagePath();
     res.sendFile(filename, options, function(err) {
-      console.log("filename to send: "+filename);
+      console.log("file to send: "+filename);
+	  console.log(options.headers.photoProperties);
       if (err) {
         console.error(err);
         // next(err);
