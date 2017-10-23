@@ -56,7 +56,7 @@ class PhotoBuilder {
   }
 
   removeBaseDir(path) {
-    str = path.replace(this.baseDir, "");
+    let str = path.replace(this.baseDir, "");
     return str;
   }
 
