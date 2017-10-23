@@ -10,23 +10,33 @@ cors       	= require('cors');
 
 
 let app = express();
-let PORT = process.env.PORT || 8080;
 
-let corsOptions = {
-  origin: 'http://localhost:4200',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+let baseDir;
+if (require('dotenv').load()) {
+  console.log("Loaded .env");
+  baseDir = process.env.BASE_URL /* dev */ || "/dist"/* prod */;
+  console.log("Base directory: "+baseDir);
+  if (process.env.NODE_ENV==="dev") {
+    console.log("Dev environment, use of cors");
+    let corsOptions = {
+      origin: 'http://localhost:4200',
+      optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    }
+    app.use(cors());
+  }
 }
-app.use(cors());
+
+
+let PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
-let relativeDirectory = './assets/photos';
+const relativeDirectory = './assets/photos';
 photoBuilder = new PhotoBuilder(relativeDirectory);
-photoBuilder.scanFiles();
-// asynchronous method, be careful in the rest of the app
+photoBuilder.scanFiles(); // asynchronous method, be careful in the rest of the app
 queryParser = new QueryParser();
 sessionHandler = new SessionHandler();
 
-app.get('/api/photos/', function(req, res) {
+app.get('/api/photos', function(req, res) {
   res.send(photoBuilder.getPhotoNames());
   console.log("sent the photo names");
 });
@@ -41,7 +51,6 @@ app.get("/api/photo/uri/:photoName", function(req, res) {
     res.send({"photoProperties":photoProperties});
   }
 });
-
 
 app.get('/api/photo/:photoName', function(req, res) {
   let photoName = queryParser.parseQuery(req.params.photoName);
@@ -82,7 +91,7 @@ app.get("/api/ar/smartphone/:arSessionCode", function(req, res) {
   res.send({"listPhotoNames": listPhotoNames});
 });
 
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname + baseDir));
 /*app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/src/index.html'));
 });*/
