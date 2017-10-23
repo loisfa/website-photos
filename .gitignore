@@ -3,6 +3,9 @@
 # Local environment variables
 .env
 
+# Assets (already in src/)
+/assets
+
 # compiled output
 /dist
 /tmp
