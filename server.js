@@ -30,8 +30,8 @@ if (require('dotenv').load()) {
 let PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
-const relativeDirectory = './'+baseDir+'/assets/photos';
-photoBuilder = new PhotoBuilder(relativeDirectory);
+const relativeDirectory = '/assets/photos';
+photoBuilder = new PhotoBuilder(baseDir, relativeDirectory);
 photoBuilder.scanFiles(); // asynchronous method, be careful in the rest of the app
 queryParser = new QueryParser();
 sessionHandler = new SessionHandler();

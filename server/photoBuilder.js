@@ -4,8 +4,9 @@ const imagesTypes = ['png', 'jpg', 'jpeg'];
 
 class PhotoBuilder {
 
-  constructor(directory) {
-    this.directory = directory;
+  constructor(baseDir, directory) {
+    this.baseDir = baseDir;
+    this.directory = '.' + baseDir + directory;
     this.listPhotos = {};
     this.listPhotoNames = [];
   }
@@ -33,26 +34,30 @@ class PhotoBuilder {
         			throw err;
         		  }
               let properties = JSON.parse(data);
-              console.log("fullPathImage: "+fullPathImage);
+              console.log("fullPathImage (before replacement of base directory): "+fullPathImage);
         		  this.buildPhoto(fullPathImage, properties);
         		});
         	}
         });
       }
     });
-
   }
 
   buildPhoto(fullPathImage, properties) {
-    let photo = new Photo(fullPathImage, properties);
+    let photo = new Photo(removeBaseDir(fullPathImage), properties);
     let photoName = photo.getPhotoName();
     if (this.listPhotos[photoName] == undefined) {
       this.listPhotos[photoName] = photo;
       this.listPhotoNames.push(photoName);
     } else {
       console.log(photoName + "is a name used for two different photos: "
-        +this.listPhotos[photoName].getImagePath +" and "+fullPathImage);
+        +this.listPhotos[photoName].getImagePath +" and "+removeBaseDir(fullPathImage));
     }
+  }
+
+  removeBaseDir(path) {
+    str = path.replace(this.baseDir, "");
+    return str;
   }
 
   getPhotoNames() {
