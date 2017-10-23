@@ -44,14 +44,14 @@ class PhotoBuilder {
   }
 
   buildPhoto(fullPathImage, properties) {
-    let photo = new Photo(removeBaseDir(fullPathImage), properties);
+    let photo = new Photo(this.removeBaseDir(fullPathImage), properties);
     let photoName = photo.getPhotoName();
     if (this.listPhotos[photoName] == undefined) {
       this.listPhotos[photoName] = photo;
       this.listPhotoNames.push(photoName);
     } else {
       console.log(photoName + "is a name used for two different photos: "
-        +this.listPhotos[photoName].getImagePath +" and "+removeBaseDir(fullPathImage));
+        +this.listPhotos[photoName].getImagePath +" and "+this.removeBaseDir(fullPathImage));
     }
   }
 
