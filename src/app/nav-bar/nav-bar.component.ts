@@ -9,7 +9,7 @@ import { PhotosHandler } from '../PhotosHandler.service';
 })
 export class NavBarComponent implements OnInit {
 
-  @Input() public listSections:Array<Object>=[];  // should be private, but AOT compilation fails when private  
+  @Input() public listSections:Array<Object>=[];  // should be private, but AOT compilation fails when private
 
   constructor(private route:ActivatedRoute,
     private photosHandler:PhotosHandler) {}
@@ -39,7 +39,6 @@ export class NavBarComponent implements OnInit {
   }
 
   public setActivatedSection(sectionLinkRouter:string):void {
-
     for(let section of this.listSections) {
       if (sectionLinkRouter===section["routerLink"]) {
         section["class"]="nav-title section-on";

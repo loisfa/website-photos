@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     HttpClientModule,
     RouterModule.forRoot(
-      appRoutes,
+      appRoutes
     ),
   ],
   providers: [PhotosHandler, APIHandler, HttpClient, CookieService, Cookies],

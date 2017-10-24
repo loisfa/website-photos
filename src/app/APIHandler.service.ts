@@ -17,7 +17,7 @@ export class APIHandler {
   private urlARCode:string;
 
   constructor(private http: HttpClient) {
-    console.log("env url: "+this.urlBase);
+    console.log("env api url: "+this.urlBase);
     this.urlAllPhotoNames = this.urlBase + this.routeAllPhotoNames;
     this.urlPhoto = this.urlBase + this.routePhotoUri;
     this.urlARCode = this.urlBase + this.routeARCode;
