@@ -38,7 +38,7 @@ export class NavBarComponent implements OnInit {
     this.listSections.push(artistObject);
   }
 
-  public setActivatedSection(sectionLinkRouter:string):void {
+  public setActiveSection(sectionLinkRouter:string):void {
     for(let section of this.listSections) {
       if (sectionLinkRouter===section["routerLink"]) {
         section["class"]="nav-title section-on";

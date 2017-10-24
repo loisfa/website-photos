@@ -4,7 +4,7 @@ border-bottom:1px solid rgba(200,200,200);
 justify-content: center; display: flex;">
   <div *ngFor="let section of this.listSections"
   [routerLink]="section['routerLink']" [ngClass]="section['class']"
-  (click)="setActivatedSection(section['routerLink'])">
+  (click)="setActiveSection(section['routerLink'])">
     {{section["text"]}}
     <img *ngIf="section['imgUri']!==undefined"
     [src]="section['imgUri']" style="width:20px;" >
