@@ -38,17 +38,17 @@ div .nav-title {
   padding-bottom:0px;
 }
 div .nav-title:hover {
-  color:rgb(100,150,200);
-  border-bottom:4px solid rgb(180,200,220);
+  color:rgb(200,200,200);
+  border-bottom:4px solid rgb(200,200,200);
   cursor:pointer;
 }
 div .section-on {
-  color:rgb(50,150,250);
-  border-bottom:4px solid rgb(150,200,250);
+  color:white;
+  border-bottom:4px solid rgba(220,220,220);
 }
 div .section-off {
-  color:gray;
-  border-bottom:4px solid rgb(235,235,235);
+  color:rgb(120,120,120);
+  border-bottom:3px solid rgb(120,120,120);
 }
 
 
@@ -92,19 +92,21 @@ div .section-off {
 
 
 .wallpaper {
-  background-image: url("/assets/wallpaper/tile-light-light-light.png");
+  background-image: url("/assets/wallpaper/tile-light-light.png");
   background-repeat: repeat;
 }
 
 
 .ar-image {
-  background-image: url("/assets/images/augmented-reality-6.jpg");
+  /*background-image: url("/assets/images/augmented-reality-4.jpg");*/
 
+  background-image: url("/assets/wallpaper/tile-red-light-light.png");
+  background-repeat: repeat;
+  /*background-color: rgba(200,210,220);
   /* Full height */
   width: 100%;
-
   /* Center and scale the image nicely */
-  background-position: center;
+  /*background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;*/
 }
