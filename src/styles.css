@@ -39,7 +39,7 @@ div .nav-title {
 }
 div .nav-title:hover {
   color:rgb(200,200,200);
-  border-bottom:4px solid rgb(200,200,200);
+  border-bottom:4px solid rgb(220,220,220);
   cursor:pointer;
 }
 div .section-on {
@@ -47,8 +47,8 @@ div .section-on {
   border-bottom:4px solid rgba(220,220,220);
 }
 div .section-off {
-  color:rgb(120,120,120);
-  border-bottom:3px solid rgb(120,120,120);
+  color:rgb(150,150,150);
+  border-bottom:3px solid rgb(150,150,150);
 }
 
 
