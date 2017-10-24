@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PhotosHandler } from '../PhotosHandler.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,8 +11,10 @@ export class NavBarComponent implements OnInit {
 
   @Input() public listSections:Array<Object>=[];  // should be private, but AOT compilation fails when private
 
-  constructor(private route:ActivatedRoute,
-    private photosHandler:PhotosHandler) {}
+  constructor(
+    private router:Router,
+    private photosHandler:PhotosHandler
+  ) {}
 
   ngOnInit() {
     let galleryObject:Object= {
@@ -36,13 +38,22 @@ export class NavBarComponent implements OnInit {
     this.listSections.push(galleryObject);
     this.listSections.push(myFavoritesObject);
     this.listSections.push(artistObject);
+    this.router.events.subscribe((route:any) => {
+      route = route.url.split("/")[1];
+      this.setActiveSection(route);
+      console.log("setActiveSection - route:"+route);
+    });
   }
 
   public setActiveSection(sectionLinkRouter:string):void {
     for(let section of this.listSections) {
-      if (sectionLinkRouter===section["routerLink"]) {
+      console.log("section['routerLink']: " + section["routerLink"]);
+      console.log("sectionLinkRouter: " + sectionLinkRouter);
+      if (sectionLinkRouter==section["routerLink"]) {
+        console.log("match");
         section["class"]="nav-title section-on";
       } else {
+        console.log("no match");
         section["class"]="nav-title section-off";
       }
     }
