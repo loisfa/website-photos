@@ -1,17 +1,51 @@
-<div class="center"
-style="background-color:rgb(30,30,30); position:fixed; z-index:1; width:100%;
-border-bottom:0px solid black;
-justify-content: center; display: flex;">
-  <div *ngFor="let section of this.listSections"
-  [routerLink]="section['routerLink']"
-  routerLinkActive="active"
-  [ngClass]="section['class']"
-  (click)="setActiveSection(section['routerLink'])">
-    {{section["text"]}}
-    <img *ngIf="section['imgUri']!==undefined"
-    [src]="section['imgUri']" style="width:20px;" >
-    <span style="font-size:14px" *ngIf="section['routerLink']==='my-favorites'">
-      ({{this.photosHandler.getFavoritePhotos().length}})
-    </span>
+<div class="center" style="text-align: left;">
+
+  <div class="nav-icon" (click)="clickedHamburgerMenu()">
+    <img src="/assets/icons/hamburger-menu.png"
+    style="width:32px; margin:10px; position:fixed; z-index:2;"/>
   </div>
+
+  <div class="nav-bar">
+    <div *ngFor="let section of this.listSections"
+    [routerLink]="section['routerLink']"
+    routerLinkActive="active"
+    [ngClass]="section['class']"
+    (click)="setActiveSection(section['routerLink'])">
+      {{section["text"]}}
+      <img *ngIf="section['imgUri']!==undefined"
+      [src]="section['imgUri']" style="width:20px;" >
+      <span style="font-size:14px" *ngIf="section['routerLink']==='my-favorites'">
+        ({{this.photosHandler.getFavoritePhotos().length}})
+      </span>
+    </div>
+
+    <div class="active-section-title">
+      {{activeSection["text"]}}
+      <img *ngIf="activeSection['imgUri']!==undefined"
+      [src]="activeSection['imgUri']" style="width:20px;" >
+      <span style="font-size:14px" *ngIf="activeSection['routerLink']==='my-favorites'">
+        ({{this.photosHandler.getFavoritePhotos().length}})
+      </span>
+    </div>
+  </div>
+
+  <div class="side-bar" style="background-color:rgb(30,30,30);"
+  *ngIf="hamburgerMenuIsOpen">
+    <br>
+    <br>
+    <div *ngFor="let section of this.listSections"
+    [routerLink]="section['routerLink']"
+    style="cursor:pointer; background-color:rgb(30,30,30); color:rgba(200,200,200);
+    font-size:18px; padding:10px; margin:5px;"
+    routerLinkActive="active"
+    (click)="setActiveSection(section['routerLink'])">
+      {{section["text"]}}
+      <img *ngIf="section['imgUri']!==undefined"
+      [src]="section['imgUri']" style="width:20px;" >
+      <span style="font-size:14px" *ngIf="section['routerLink']==='my-favorites'">
+        ({{this.photosHandler.getFavoritePhotos().length}})
+      </span>
+    </div>
+  </div>
+
 </div>

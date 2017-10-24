@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   @Input() public listSections:Array<Object>=[];  // should be private, but AOT compilation fails when private
+  @Input() public activeSection:Object={};
+  @Input() public hamburgerMenuIsOpen:boolean=false;
 
   constructor(
     private router:Router,
@@ -52,6 +54,7 @@ export class NavBarComponent implements OnInit {
       if (sectionLinkRouter==section["routerLink"]) {
         console.log("match");
         section["class"]="nav-title section-on";
+        this.activeSection=section;
       } else {
         console.log("no match");
         section["class"]="nav-title section-off";
@@ -59,4 +62,7 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  public clickedHamburgerMenu():void {
+    this.hamburgerMenuIsOpen = !this.hamburgerMenuIsOpen;
+  }
 }

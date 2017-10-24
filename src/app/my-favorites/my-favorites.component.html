@@ -1,9 +1,8 @@
 <div style="padding-top:60px;">
+  <h4 class="center">
+    My <img src="/assets/icons/heart-fill-red.png" style="width:25px;"/>
+  </h4>
   <div style="padding-left:20px;">
-    <br>
-    <h5 class="inline">
-      My <img src="/assets/icons/heart-fill-red.png" style="width:25px;"/> :
-    </h5>
     <div class="inline" *ngFor="let photo of this.photosHandler.getFavoritePhotos()">
       <app-item-photo
         [imgProperties]="photo['properties']">
