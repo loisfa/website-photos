@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
 .center {
   text-align:center;
 }
@@ -10,9 +10,18 @@
 
 .item-photo {
   background-color: white;
+  border:1px solid rgb(200,200,200);
+  border-radius:5px;
+  padding:10px;
+  margin:5px;
 }
 .item-photo:hover {
   background-color: rgb(245,245,245);
+}
+.img-item-photo {
+  border-radius:3px;
+  max-height:50px;
+  max-width:100px;
 }
 
 div .nav-bar {
@@ -62,9 +71,11 @@ div .active-section-title {
   color:white;
   border-bottom:4px solid rgba(220,220,220);
 }
-div .side-bar {
+#side-bar {
   display:none;
   position: absolute;
+  background-color:rgb(30,30,30);
+  z-index:1;
 }
 div .section-side-bar {
   cursor:pointer;
@@ -86,7 +97,24 @@ div .section-side-bar:hover {
   div .nav-title {display: none;}
   div .active-section-title {display: inline;}
   div .nav-icon {display: inline;}
-  div .side-bar {display: inline;}
+  #side-bar {display: inline;}
+}
+
+.detail-thumbnail-photo {
+   color:gray;
+   margin:0px;
+   padding:0px;
+   margin-left:10px;
+}
+
+.photo-thumbnail {
+  border:1px solid rgb(200,200,200);
+  background-color:white;
+  border-radius:5px;
+  padding-top:20px;
+  padding-left:20px;
+  padding-right:20px;
+  margin:5px;
 }
 
 .image-zoom {
@@ -130,15 +158,66 @@ div .section-side-bar:hover {
   background-repeat: repeat;
 }
 
-.ar-image {
-  /*background-image: url("/assets/images/augmented-reality-4.jpg");*/
+div .ar-background {
   background-image: url("/assets/wallpaper/tile-blue.png");
   background-repeat: repeat;
-  /*background-color: rgba(200,210,220);
-  /* Full height */
   width: 100%;
-  /* Center and scale the image nicely */
-  /*background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;*/
+}
+
+.cursor-pointer {
+   cursor:pointer;
+}
+
+.ar-title {
+   color:rgb(150,50,20);
+   padding-bottom:0px;
+}
+.border-round {
+  border-radius: 1000px;
+}
+
+ #demo-button {
+   padding-bottom:0px;
+ }
+
+#button-add-favorites {
+   margin:10px;
+   padding:10px;
+   padding-top:17px;
+   height:65px;
+   font-size:18px;
+ }
+
+ div .ar-step-div {
+   border:1px solid rgb(200,200,200);
+   border-radius:3px;
+   margin:5px;
+  padding:10px;
+  background-color:rgb(250,250,250)
+ }
+#step-caption {
+  color:rgb(160,160,160);
+  font-size:16px;
+}
+.page {
+  padding-top:60px;
+}
+.white-bg {
+  background-color: white;
+}
+
+#artist-name-title {/* nothing yet */}
+
+.btn-remove-favorite {
+  padding:0px;
+  padding-bottom:21px;
+  margin-left:10px;
+  height:20px;
+  width:20px;
+}
+
+#hamburger-menu-icon {
+  width:32px;
+  margin:10px;
+  position:fixed;
 }

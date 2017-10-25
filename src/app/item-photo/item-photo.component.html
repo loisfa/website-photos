@@ -1,20 +1,11 @@
-<div class="inline item-photo"
-style="border:1px solid rgb(200,200,200); border-radius:5px;
-cursor:pointer; padding:10px; margin:5px;"
-(click)="clickedPhoto()">
-  <img class="inline"
-  style="border-radius:3px; max-height:50px; max-width:100px;"
-  src="{{imgProperties['uri']}}"
-  (click)="clickedPhoto()"/>
+<div class="inline item-photo cursor-pointer" (click)="clickedPhoto()">
+  <img class="inline img-item-photo" src="{{imgProperties['uri']}}" (click)="clickedPhoto()"/>
   <div class="inline" style="margin-left:10px;">
    <h5>
      {{imgProperties["name"]}}
    </h5>
-   </div>   
-   <button class="btn btn-danger"
-   data-toggle="tooltip"
-   title="Remove from my favorites"
-   style="padding:0px; padding-top:-3px; margin-left:10px;height:20px; width:20px; cursor:pointer;"
+   </div>
+   <button class="btn btn-danger btn-remove-favorite" data-toggle="tooltip" title="Remove from my favorites"
    (click)="clickedFavorite()">
      X
    </button>
