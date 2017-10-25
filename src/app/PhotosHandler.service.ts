@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { APIHandler } from './APIHandler.service';
 import { PhotoModel } from './PhotoModel';
-import { MyObservable } from './interface-observable';
+import { MyObservable } from './MyObservable';
 import { Cookies } from './Cookies.service';
 import { Observable } from 'rxjs/Rx';
 

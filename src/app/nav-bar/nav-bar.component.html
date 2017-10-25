@@ -35,8 +35,7 @@
     <br>
     <div *ngFor="let section of this.listSections"
     [routerLink]="section['routerLink']"
-    style="cursor:pointer; background-color:rgb(30,30,30); color:rgba(200,200,200);
-    font-size:18px; padding:10px; margin:5px;"
+    class="section-side-bar"
     routerLinkActive="active"
     (click)="setActiveSection(section['routerLink'])">
       {{section["text"]}}

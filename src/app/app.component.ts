@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PhotosHandler } from './PhotosHandler.service';
-import { MyObserver } from './interface-observer';
+import { MyObserver } from './MyObserver';
 
 @Component({
   selector: 'app-root',

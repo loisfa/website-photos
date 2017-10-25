@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MyFavoritesComponent } from './my-favorites.component';
 
 describe('MyFavoritesComponent', () => {

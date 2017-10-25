@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ModalErrorComponent } from './modal-error.component';
 
 describe('ModalErrorComponent', () => {

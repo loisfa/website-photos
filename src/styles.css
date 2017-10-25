@@ -15,11 +15,6 @@
   background-color: rgb(245,245,245);
 }
 
-
-
-
-
-
 div .nav-bar {
   text-align: center;
   color:red;
@@ -30,6 +25,7 @@ div .nav-bar {
   justify-content: center;
   position:fixed;
   z-index:1;
+  min-height: 45px;
 }
 div .nav-title {
   margin-left:10px;
@@ -70,14 +66,28 @@ div .side-bar {
   display:none;
   position: absolute;
 }
+div .section-side-bar {
+  cursor:pointer;
+  background-color:rgb(30,30,30);
+  color:rgba(170,170,170);
+  font-size:18px;
+  padding:10px;
+  margin:5px;
+}
+div .section-side-bar:hover {
+  cursor:pointer;
+  background-color:rgb(30,30,30);
+  color:rgba(230,230,230);
+  font-size:18px;
+  padding:10px;
+  margin:5px;
+}
 @media screen and (max-width: 500px) {
   div .nav-title {display: none;}
   div .active-section-title {display: inline;}
   div .nav-icon {display: inline;}
   div .side-bar {display: inline;}
 }
-
-
 
 .image-zoom {
   max-height:180px;
@@ -89,7 +99,6 @@ div .side-bar {
   -o-transition: all 0.2s ease; /* Opera */
   transition: all 0.2s ease;
 }
-
 .image-zoom:hover {
   -webkit-transform:scale(1.05); /* Safari and Chrome */
   -moz-transform:scale(1.05); /* Firefox */
@@ -108,7 +117,6 @@ div .side-bar {
   -o-transition: all 0.2s ease; /* Opera */
   transition: all 0.2s ease;
 }
-
 .image-zoom-high:hover {
   -webkit-transform:scale(1.2); /* Safari and Chrome */
   -moz-transform:scale(1.2); /* Firefox */
@@ -117,17 +125,14 @@ div .side-bar {
    transform:scale(1.2);
 }
 
-
 .wallpaper {
   background-image: url("/assets/wallpaper/tile-light-light.png");
   background-repeat: repeat;
 }
 
-
 .ar-image {
   /*background-image: url("/assets/images/augmented-reality-4.jpg");*/
-
-  background-image: url("/assets/wallpaper/tile-red-light-light.png");
+  background-image: url("/assets/wallpaper/tile-blue.png");
   background-repeat: repeat;
   /*background-color: rgba(200,210,220);
   /* Full height */

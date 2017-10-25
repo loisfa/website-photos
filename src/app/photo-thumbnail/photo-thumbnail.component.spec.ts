@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PhotoThumbnailComponent } from './photo-thumbnail.component';
 
 describe('PhotoThumbnailComponent', () => {

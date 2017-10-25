@@ -1,12 +1,12 @@
-let express = require('express'),
-bodyParser  = require('body-parser'),
-fs          = require('fs'),
-PhotoBuilder = require('./server/photoBuilder'),
-Photo       = require('./server/photo'),
-QueryParser = require('./server/queryParser'),
-SessionHandler = require('./server/sessionHandler'),
-path        = require('path'),
-cors       	= require('cors');
+let express     = require('express');
+let bodyParser  = require('body-parser');
+let fs          = require('fs');
+let path        = require('path');
+let cors       	= require('cors');
+let PhotoBuilder = require('./server/PhotoBuilder.js');
+let Photo       = require('./server/Photo.js');
+let QueryParser = require('./server/QueryParser.js');
+let SessionHandler = require('./server/SessionHandler.js');
 
 
 let app = express();
