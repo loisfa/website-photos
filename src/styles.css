@@ -1,11 +1,20 @@
+.wallpaper {
+  background-image: url("/assets/wallpaper/tile-light-light.jpg");
+  background-repeat: repeat;
+}
 
 .center {
   text-align:center;
 }
-
 .inline
 {
   display: inline-block;
+}
+.cursor-pointer {
+   cursor:pointer;
+}
+.border-round {
+  border-radius: 1000px;
 }
 
 .item-photo {
@@ -24,6 +33,11 @@
   max-width:100px;
 }
 
+#hamburger-menu-icon {
+  width:32px;
+  margin:10px;
+  position:fixed;
+}
 div .nav-bar {
   text-align: center;
   color:red;
@@ -50,7 +64,7 @@ div .nav-title:hover {
 }
 div .section-on {
   color:white;
-  border-bottom:4px solid rgba(220,220,220);
+  border-bottom:4px solid rgb(220,220,220);
 }
 div .section-off {
   color:rgb(150,150,150);
@@ -100,13 +114,12 @@ div .section-side-bar:hover {
   #side-bar {display: inline;}
 }
 
-.detail-thumbnail-photo {
+.details-thumbnail-photo {
    color:gray;
    margin:0px;
    padding:0px;
    margin-left:10px;
 }
-
 .photo-thumbnail {
   border:1px solid rgb(200,200,200);
   background-color:white;
@@ -153,27 +166,14 @@ div .section-side-bar:hover {
    transform:scale(1.2);
 }
 
-.wallpaper {
-  background-image: url("/assets/wallpaper/tile-light-light.png");
-  background-repeat: repeat;
-}
-
 div .ar-background {
-  background-image: url("/assets/wallpaper/tile-blue.png");
+  background-image: url("/assets/wallpaper/tile-blue-light.jpg");
   background-repeat: repeat;
   width: 100%;
 }
-
-.cursor-pointer {
-   cursor:pointer;
-}
-
 .ar-title {
-   color:rgb(150,50,20);
+   color:rgb(80,80,120);
    padding-bottom:0px;
-}
-.border-round {
-  border-radius: 1000px;
 }
 
  #demo-button {
@@ -214,10 +214,4 @@ div .ar-background {
   margin-left:10px;
   height:20px;
   width:20px;
-}
-
-#hamburger-menu-icon {
-  width:32px;
-  margin:10px;
-  position:fixed;
 }
