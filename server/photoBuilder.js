@@ -9,6 +9,7 @@ class PhotoBuilder {
     this.directory = this.baseDir + directory;
     this.listPhotos = {};
     this.listPhotoNames = [];
+    this.scanFiles();
   }
 
   scanFiles() {
