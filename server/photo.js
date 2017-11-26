@@ -1,4 +1,5 @@
 class Photo {
+
   constructor(imagePath, properties) {
     this.imagePath = imagePath;
     this.properties =
