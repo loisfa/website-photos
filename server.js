@@ -3,10 +3,10 @@ let bodyParser  = require('body-parser');
 let fs          = require('fs');
 let path        = require('path');
 let cors       	= require('cors');
-let PhotoBuilder = require('/server/PhotoBuilder.js');
-let Photo       = require('/server/Photo.js');
-let QueryParser = require('/server/QueryParser.js');
-let SessionHandler = require('/server/SessionHandler.js');
+let PhotoBuilder = require('./server/PhotoBuilder.js');
+let Photo       = require('./server/Photo.js');
+let QueryParser = require('./server/QueryParser.js');
+let SessionHandler = require('./server/SessionHandler.js');
 
 let app = express();
 let PORT = process.env.PORT || 8080;
