@@ -1,5 +1,5 @@
 let fs = require('fs');
-Photo = require('./photo.js');
+Photo = require('./Photo.js');
 const imagesTypes = ['png', 'jpg', 'jpeg'];
 
 class PhotoBuilder {
