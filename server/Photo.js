@@ -38,6 +38,7 @@ class Photo {
   getImagePath() {
     return this.imagePath;
   }
+  
 }
 
 module.exports = Photo;
