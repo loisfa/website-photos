@@ -61,7 +61,7 @@ app.get('/api/photo/:photoName', function(req, res) {
         "photoProperties": JSON.stringify(photo.getProperties())
       }
 	};
-    let filename = photo.getImagePath();
+    let filename = '.' + baseDir + photo.getImagePath();
 	console.log("filename of photo: "+filename);
     res.sendFile(filename, options, function(err) {
       if (err) {
