@@ -11,7 +11,9 @@ class Photo {
     };
     this.setProperties(properties);
 	this.setProperty("uri", imagePath);
+	console.log("this.imagePath:");
 	console.log(this.imagePath);
+	console.log("this.properties:");
 	console.log(this.properties);
   }
 
