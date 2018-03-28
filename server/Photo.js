@@ -10,11 +10,11 @@ class Photo {
       "price":undefined
     };
     this.setProperties(properties);
-	this.setProperty("uri", imagePath);
-	console.log("this.imagePath:");
-	console.log(this.imagePath);
-	console.log("this.properties:");
-	console.log(this.properties);
+  	this.setProperty("uri", imagePath);
+  	console.log("this.imagePath:");
+  	console.log(this.imagePath);
+  	console.log("this.properties:");
+  	console.log(this.properties);
   }
 
   setProperties(properties) {
@@ -26,9 +26,9 @@ class Photo {
       }
     }
   }
-  
+
   setProperty(propertyKey, propertyValue) {
-	this.properties[propertyKey] = propertyValue;
+	   this.properties[propertyKey] = propertyValue;
   }
 
   getProperties() {
@@ -42,7 +42,6 @@ class Photo {
   getImagePath() {
     return this.imagePath;
   }
-  
 }
 
 module.exports = Photo;
