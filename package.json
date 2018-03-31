@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod --verbose",
+    "build": "ng build --prod --build-optimizer --verbose",
 	"test": "mocha server/test/**/*.spec.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --verbose"
+    "postinstall": "ng build --prod --build-optimizer --verbose"
   },
   "private": true,
   "dependencies": {
