@@ -1,41 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppComponent } from './app.component';
-import { PhotoThumbnailComponent } from './photo-thumbnail/photo-thumbnail.component';
-import { PhotosHandler } from './PhotosHandler.service';
-import { APIHandler } from './APIHandler.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { GalleryComponent } from './gallery/gallery.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtistComponent } from './artist/artist.component';
-import { MyFavoritesComponent } from './my-favorites/my-favorites.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Cookies } from "./Cookies.service";
-import { ModalPhotoComponent } from './modal-photo/modal-photo.component';
-import { ItemPhotoComponent } from './item-photo/item-photo.component';
-import { ArSeeHomeComponent } from './ar-see-home/ar-see-home.component';
-import { ModalErrorComponent } from './modal-error/modal-error.component';
+
+import { APIHandler } from './services/APIHandler.service';
+import { PhotosHandler } from './services/PhotosHandler.service';
+import { Cookies } from "./services/Cookies.service";
+
+import { AppComponent } from './components/app.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SectionGalleryComponent } from './components/section-gallery/section-gallery.component';
+import { SectionMyFavoritesComponent } from './components/section-my-favorites/section-my-favorites.component';
+import { SectionArtistComponent } from './components/section-artist/section-artist.component';
+import { ThumbnailGalleryPhotoComponent } from './components/thumbnail-gallery-photo/thumbnail-gallery-photo.component';
+import { ItemFavoritePhotoComponent } from './components/item-favorite-photo/item-favorite-photo.component';
+import { ArSeeHomeComponent } from './components/ar-see-home/ar-see-home.component';
+import { ModalPhotoComponent } from './components/modal-photo/modal-photo.component';
+import { ModalErrorComponent } from './components/modal-error/modal-error.component';
 
 
 const appRoutes: Routes = [
-  { path: 'gallery', component: GalleryComponent, data: {"route":"/gallery"}},
-  { path: 'artist', component: ArtistComponent,  data: {"route":"/artist"}},
-  { path: 'my-favorites', component: MyFavoritesComponent,  data: {"route":"/my-favorites"}},
-  { path: '**', component: GalleryComponent,  data: {"route":"/gallery"}}
+  { path: 'gallery', component: SectionGalleryComponent, data: {"route":"/gallery"}},
+  { path: 'artist', component: SectionArtistComponent,  data: {"route":"/artist"}},
+  { path: 'my-favorites', component: SectionMyFavoritesComponent,  data: {"route":"/my-favorites"}},
+  { path: '**', component: SectionGalleryComponent,  data: {"route":"/gallery"}}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotoThumbnailComponent,
+    ThumbnailGalleryPhotoComponent,
     NavBarComponent,
-    GalleryComponent,
-    ArtistComponent,
-    MyFavoritesComponent,
+    SectionGalleryComponent,
+    SectionArtistComponent,
+    SectionMyFavoritesComponent,
     ModalPhotoComponent,
-    ItemPhotoComponent,
+    ItemFavoritePhotoComponent,
     ArSeeHomeComponent,
     ModalErrorComponent
   ],

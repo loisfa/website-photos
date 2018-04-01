@@ -3,19 +3,17 @@ let bodyParser  = require('body-parser');
 let fs          = require('fs');
 let path        = require('path');
 let cors       	= require('cors');
-let PhotoHandler = require('./server/PhotoHandler.js');
-let Photo       = require('./server/model/Photo.js');
-let QueryParser = require('./server/QueryParser.js');
-let SessionHandler = require('./server/SessionHandler.js');
+let RequestHandler = require('./server/RequestHandler.js');
+require('./server/utils/QueryUtils.js');
 
 let app = express();
 let PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
-let baseDir;
+let resourceDirectory;
 if (require('dotenv').load()) { // loads environment from .env file in root directory
-  baseDir = process.env.BASE_URL /* dev */ || "/dist"/* prod */;
-  console.log("Loaded .env - Base directory: " + baseDir);
+  resourceDirectory =   process.env.BASE_URL /* dev */ || "/dist"/* prod */;
+  console.log("Loaded .env - Base directory: " + resourceDirectory);
   if (process.env.NODE_ENV === "dev") {
     console.log("Dev environment - Use of cors");
     let corsOptions = {
@@ -27,73 +25,35 @@ if (require('dotenv').load()) { // loads environment from .env file in root dire
 }
 
 const relativeDirectory = '/assets/photos';
-photoHandler = new PhotoHandler(baseDir, relativeDirectory); // asynchronous method, be careful in the rest of the app
-queryParser = new QueryParser();
-sessionHandler = new SessionHandler();
+requestHandler = new RequestHandler(resourceDirectory, relativeDirectory);
 
 // returns the ids list of all photos
-app.get('/api/photos', function(req, res) {
-  let response = JSON.stringify(photoHandler.getPhotoIds());
-  res.send(response);
-  console.info("Sent the photo ids: " + response);
+app.get("/api/photos/get-all-ids/", function(req, res) {
+  requestHandler.sendAllPhotoIds(res);
 });
 
 // returns the properties of the photo identified by its id photoId
-app.get("/api/photo/uri/:photoId", function(req, res) {
+app.get("/api/photos/get-properties/:photoId", function(req, res) {
   let photoId = req.params.photoId;
-  let photo = photoHandler.getPhoto(photoId);
-  if (photo === undefined) {
-    res.send("No photo with id: " + photoId);
-    console.log("Could not send photo properties for id: " + photoId
-      + ". Photo does not exist.");
-  } else {
-    let photoProperties = photo.getProperties();
-    res.send({"photoProperties":photoProperties});
-    console.log("Sent the photo properties for photo id: " + photoId);
-  }
+  requestHandler.sendPhotoProperty(photoId, res);
 });
 
 // returns the path of the photo identified by its id photoId
-app.get('/api/photo/:photoId', function(req, res) {
+app.get("/api/photos/get-image/:photoId", function(req, res) {
   let photoId = req.params.photoId;
-  let photo = photoHandler.getPhoto(photoId);
-  if (photo === undefined) {
-    res.send("No photowith with name: " + photoId);
-    console.log("Could not send photo path. No photo with id: " + photoId);
-
-  } else {
-    let options = {
-      "root" : __dirname,
-      "headers": {
-        "photoProperties": JSON.stringify(photo.getProperties())
-      }
-  	};
-    let filename = '.' + baseDir + photo.getImagePath();
-  	console.log("Filename of photo: " + filename);
-    res.sendFile(filename, options, function(err) {
-      if (err) {
-        console.error(err);
-        // next(err);
-      } else {
-        console.log("Sent photo with id: " + photoId);
-      }
-    });
-  }
+  requestHandler.sendPhotoImage(photoId, res);
 });
 
 // returns a session code for the session associated with :listPhotoIds
-app.get("/api/ar/web/:listPhotoIds", function(req, res) {
+app.get("/api/ar/get-session-code/:listPhotoIds", function(req, res) {
   let listPhotoIds = queryParser.convertQueryToList(req.params.listPhotoIds);
-  let code = sessionHandler.getCode(listPhotoIds);
-  res.send({"arSessionCode": code});
-  console.log("sent session code: " + code);
+  generateAndSendSessionCode(listPhotoIds, res);
 });
 
-// returns the photoNames associated with the code :arSessionCode
-app.get("/api/ar/smartphone/:arSessionCode", function(req, res) {
-  let listPhotoIds = sessionHandler.getPhotoNames(req.params.arSessionCode);
-  console.log("Sent listPhotoIds: " + listPhotoIds);
-  res.send({"listPhotoNames": listPhotoIds});
+// returns the ids of the photos associated with the code :arSessionCode
+app.get("/api/ar/get-photo-ids/:arSessionCode", function(req, res) {
+  let arSessionCode = req.params.arSessionCode;
+  sendPhotoIds(arSessionCode, res);
 });
 
 app.get('/robots.txt', function (req, res) {
@@ -102,8 +62,8 @@ app.get('/robots.txt', function (req, res) {
 });
 
 // returns the files in baseDir (front-end and resources)
-app.use(express.static(__dirname + baseDir));
+app.use(express.static(__dirname + relativeDirectory));
 
 app.listen(PORT, function() {
-  console.log("Node server listening on port " + PORT);
+  console.log("Node server listening on port: " + PORT);
 });

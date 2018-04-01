@@ -1,0 +1,19 @@
+<div class="page">
+  <h4 class="center">
+    My <img src="/assets/icons/heart-fill-red.png" style="width:24px;"/>
+  </h4>
+  <div [ngClass]="this.photosHandler.getFavoritePhotos().length>0?['']:['center']"
+  style="padding-left:20px; padding-bottom:0px;">
+    <div class="inline" *ngFor="let photo of this.photosHandler.getFavoritePhotos()">
+      <app-item-favorite-photo [photoProperties]="photo['properties']">
+      </app-item-favorite-photo>
+    </div>
+    <div id="button-add-favorites"
+    class="inline btn btn-primary cursor-pointer"
+    [routerLink]="'/gallery'">
+      Add <img src="/assets/icons/heart-fill-white.png" style="width:24px;"/> from Gallery
+    </div>
+  </div>
+
+  <app-ar-see-home></app-ar-see-home>
+</div>

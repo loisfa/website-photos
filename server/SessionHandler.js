@@ -1,4 +1,4 @@
-let Code = require('./model/Session.js');
+let Code = require('./models/Session.js');
 
 const MAX_NUMBER = 9999;
 

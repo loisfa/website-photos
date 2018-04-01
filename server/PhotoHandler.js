@@ -1,16 +1,19 @@
-fs = require('fs');
-Photo = require('./model/Photo.js');
-PhotoUtils = require('./utils/PhotoUtils.js');
-const jsonExtension = ".json";
-
+let fs    = require('fs');
+let Photo = require('./models/Photo.js');
+require('./utils/PhotoUtils.js');
 
 class PhotoHandler {
+
   constructor(baseDir, directory) {
-    this.baseDir = '.' + baseDir;
+    this.baseDir = baseDir;
     this.directory = this.baseDir + directory;
     this.photos = {};
     this.listPhotoIds = [];
     this.scanPhotoFolder();
+  }
+
+  getBaseDirectory() {
+    return this.baseDir;
   }
 
   scanPhotoFolder() {
@@ -29,7 +32,7 @@ class PhotoHandler {
             let imageFullPath = this.directory + '/' + filename;
             console.log("Image full path: " + imageFullPath);
             let fullPathFile = this.replaceExtension(
-              imageFullPath, extension, jsonExtension);
+              imageFullPath, extension, JSON_EXTENSION);
         		fs.readFile(fullPathFile, 'utf8',  (err, data) => {
         		  if (err) {
           			if (err.code === 'ENOENT') {
