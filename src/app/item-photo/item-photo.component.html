@@ -1,8 +1,8 @@
 <div class="inline item-photo cursor-pointer" (click)="clickedPhoto()">
-  <img class="inline img-item-photo" src="{{imgProperties['uri']}}" (click)="clickedPhoto()"/>
+  <img class="inline img-item-photo" src="{{photoProperties['uri']}}" (click)="clickedPhoto()"/>
   <div class="inline" style="margin-left:10px;">
    <h5>
-     {{imgProperties["name"]}}
+     {{photoProperties["name"]}}
    </h5>
    </div>
    <button class="btn btn-danger btn-remove-favorite" data-toggle="tooltip" title="Remove from my favorites"

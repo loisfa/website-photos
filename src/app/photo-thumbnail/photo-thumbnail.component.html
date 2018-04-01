@@ -1,26 +1,26 @@
 <div class="inline photo-thumbnail">
   <div class="center">
-      <img class="image-zoom" style="border-radius:3px;" src="{{imgProperties['uri']}}"
+      <img class="image-zoom" style="border-radius:3px;" src="{{photoProperties['uri']}}"
       (click)="clickedPhoto()"/>
   </div>
 
    <h5 align="left" style="padding-top:10px;padding-bottom:3px;">
-     {{imgProperties["name"]}}
+     {{photoProperties["name"]}}
    </h5>
    <div align="left" style="padding-left:0px;">
     <div class="inline" style="margin:0px; padding:0px;">
       <img class="image-zoom-high cursor-pointer" style="width:40px;"
       (click)="clickedFavorite()"
-      src="{{imgProperties['isFavorite']
+      src="{{photoProperties['isFavorite']
         ?'/assets/icons/heart-fill-red.png'
         :'/assets/icons/heart-gray.png'}}"/>
           <!--onmouseover="this.src='/assets/icons/heart-red.png'"-->
     </div>
     <div class="inline details-thumbnail-photo">
       <p>
-        {{imgProperties["dimensions"]["width"]}}x{{imgProperties["dimensions"]["height"]}}cm
+        {{photoProperties["dimensions"]["width"]}}x{{photoProperties["dimensions"]["height"]}}cm
         -
-        {{imgProperties["price"]}}€
+        {{photoProperties["price"]}}€
       </p>
     </div>
    </div>

@@ -9,9 +9,9 @@ import { environment } from '../environments/environment';
 export class APIHandler {
 
   private urlBase = environment.url;
-  private routeAllPhotoNames:string="api/photos/";
-  private routePhotoUri:string="api/photo/uri/";
-  private routeARCode:string="api/ar/web/";
+  private routeAllPhotoNames:string = "api/photos/";
+  private routePhotoUri:string = "api/photo/uri/";
+  private routeARCode:string = "api/ar/web/";
   private urlAllPhotoNames:string;
   private urlPhoto:string;
   private urlARCode:string;

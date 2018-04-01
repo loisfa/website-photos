@@ -9,19 +9,19 @@ import { PhotosHandler } from '../PhotosHandler.service'
 })
 export class ModalPhotoComponent implements OnInit {
 
-  @Input() public imgProperties:Object={};
+  @Input() public photoProperties:Object={};
 
   constructor(
     public activeModal: NgbActiveModal,
-    public photosHandler:PhotosHandler // should be private, but AOT compilation fails when private  
+    public photosHandler:PhotosHandler // should be private, but AOT compilation fails when private
   ) { }
 
   ngOnInit() {
   }
 
   public clickedFavorite():void {
-    this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
-    this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
+    this.photosHandler.getPhoto(this.photoProperties["name"]).changeFavorite();
+    this.photoProperties = this.photosHandler.getPhoto(this.photoProperties["name"]).getProperties();
   }
 
 }

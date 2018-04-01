@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ItemPhotoComponent implements OnInit {
 
-  @Input() public imgProperties:Object;  // should be private, but AOT compilation fails when private
+  @Input() public photoProperties:Object;  // should be private, but AOT compilation fails when private
 
   constructor(
     public photosHandler:PhotosHandler, // should be private, but AOT compilation fails when private
@@ -26,12 +26,12 @@ export class ItemPhotoComponent implements OnInit {
 
   public clickedPhoto():void {
     const modalRef = this.modalService.open(ModalPhotoComponent);
-    modalRef.componentInstance.imgProperties = this.imgProperties;
+    modalRef.componentInstance.photoProperties = this.photoProperties;
   }
 
   public clickedFavorite():void {
-    this.photosHandler.getPhoto(this.imgProperties["name"]).changeFavorite();
-    this.imgProperties = this.photosHandler.getPhoto(this.imgProperties["name"]).getProperties();
+    this.photosHandler.getPhoto(this.photoProperties["name"]).changeFavorite();
+    this.photoProperties = this.photosHandler.getPhoto(this.photoProperties["name"]).getProperties();
   }
 
 }

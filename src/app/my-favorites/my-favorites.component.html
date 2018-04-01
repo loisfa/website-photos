@@ -6,7 +6,7 @@
   style="padding-left:20px; padding-bottom:0px;">
     <div class="inline" *ngFor="let photo of this.photosHandler.getFavoritePhotos()">
       <app-item-photo
-        [imgProperties]="photo['properties']">
+        [photoProperties]="photo['properties']">
       </app-item-photo>
     </div>
     <div id="button-add-favorites"
