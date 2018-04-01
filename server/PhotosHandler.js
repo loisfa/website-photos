@@ -2,9 +2,10 @@ let fileSystem = require('fs');
 let Photo = require('./models/Photo.js');
 require('./utils/PhotoUtils.js');
 
-class PhotoHandler {
+class PhotosHandler {
 
-  constructor(resourcesDirAbsPath, photosRelativePath) {
+  constructor(rootDirName, resourcesDirAbsPath, photosRelativePath) {
+    this.rootDirName = rootDirName;
     this.resourcesDirAbsPath = resourcesDirAbsPath;
     this.photosDirAbsPath = resourcesDirAbsPath + photosRelativePath;
     this.photos = {};
@@ -25,6 +26,14 @@ class PhotoHandler {
 
   getPhotos() {
     return this.photos;
+  }
+
+  getResourcesDirAbsPath() {
+    return this.resourcesDirAbsPath;
+  }
+
+  getRootDirName() {
+    return this.rootDirName;
   }
 
   /*
@@ -96,4 +105,4 @@ class PhotoHandler {
 
 }
 
-module.exports = PhotoHandler;
+module.exports = PhotosHandler;

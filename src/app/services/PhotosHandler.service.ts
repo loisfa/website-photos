@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { APIHandler } from './APIHandler.service';
-import { PhotoModel } from '../models/business/PhotoModel';
+import { Photo } from '../models/business/Photo';
 import { MyObservable } from '../models/technical/MyObservable';
 import { Cookies } from './Cookies.service';
 import { Observable } from 'rxjs/Rx';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class PhotosHandler implements MyObservable {
 
-  private listPhotos:Array<PhotoModel>=[];
+  private listPhotos:Array<Photo>=[];
   private listObservers=[];
 
   constructor(private apiHandler:APIHandler, private cookieService:Cookies) {
@@ -19,7 +19,7 @@ export class PhotosHandler implements MyObservable {
       let count:number=0;
       for (let photoName of listPhotoNames) {
         this.apiHandler.getPhoto(photoName).subscribe(data => {
-          let photo:PhotoModel = new PhotoModel(data.photoProperties, this.cookieService);
+          let photo:Photo = new Photo(data.photoProperties, this.cookieService);
           if (cookieExists && this.cookieService.isFavorite(photoName)) {
             photo.setFavorite();
           }
@@ -34,7 +34,7 @@ export class PhotosHandler implements MyObservable {
   }
 
   public generateCode() : Observable<string> {
-    console.log("photos Handler asked code");
+    console.log("Photos Handler requested a session code.");
     return this.apiHandler.getCode(this.listPhotos);
   }
 
@@ -47,11 +47,11 @@ export class PhotosHandler implements MyObservable {
     }
   }
 
-  public getPhotos():Array<PhotoModel> {
+  public getPhotos():Array<Photo> {
     return this.listPhotos;
   }
-  public getFavoritePhotos():Array<PhotoModel> {
-    let listFavoritePhotos:Array<PhotoModel>=[];
+  public getFavoritePhotos():Array<Photo> {
+    let listFavoritePhotos:Array<Photo>=[];
     for(let photo of this.listPhotos) {
       if (photo.isFavorite()) {
         listFavoritePhotos.push(photo);
@@ -60,7 +60,7 @@ export class PhotosHandler implements MyObservable {
     }
     return listFavoritePhotos;
   }
-  public getPhoto(photoName:string):PhotoModel {
+  public getPhoto(photoName:string):Photo {
     let photo;
     for(let index in this.listPhotos) {
       if (this.listPhotos[index].getName() == photoName) {

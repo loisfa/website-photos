@@ -2,8 +2,8 @@ const URI_KEY = "uri";
 const ID_KEY = "id";
 const PROPERTY_KEY_LIST =
     ["name", "dimensions", "keywords", "price", URI_KEY, ID_KEY];
-const SPACE = " ";
 const SLASH = "/";
+require("../utils/StringUtils.js");
 PhotoUtils = require("../utils/PhotoUtils.js");
 
 class Photo {
@@ -16,6 +16,24 @@ class Photo {
     console.log(this.properties);
   }
 
+  /*
+   * Public methods
+   */
+  getProperties() {
+    return this.properties;
+  }
+
+  getPhotoId() {
+    return this.properties.id;
+  }
+
+  getImagePath() {
+    return this.properties.uri;
+  }
+
+  /*
+   * Private methods
+   */
   getUndefinedProperties() {
     let undefinedProperties = {};
     PROPERTY_KEY_LIST.forEach(function(propertyKey) {
@@ -45,15 +63,12 @@ class Photo {
       }
     });
     let id = filenameSplit[0];
-    if (this.containsSpace(id)) {
-      log.error("The filename cannot contain spaces. Filename: " + filename);
+    if (containsSpace(id)) {
+      log.error("The filename cannot contain space. Filename: " + filename);
     }
     return id;
   }
 
-  containsSpace(str) {
-    return str.indexOf(SPACE) >= 0;
-  }
 
   setProperty(propertyKey, propertyValue) {
     if (this.isAProperty(propertyKey)) {
@@ -65,18 +80,6 @@ class Photo {
 
   isAProperty(propertyKey) {
     return PROPERTY_KEY_LIST.includes(propertyKey);
-  }
-
-  getProperties() {
-    return this.properties;
-  }
-
-  getPhotoId() {
-    return this.properties.id;
-  }
-
-  getImagePath() {
-    return this.properties.uri;
   }
 }
 

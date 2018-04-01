@@ -28,7 +28,10 @@ if (dotEnv.load()) { // loads environment from .env file of root directory
 }
 
 const photosDirRelPath = '/assets/photos';
-requestHandler = new RequestHandler(resourcesDirAbsPath, photosDirRelPath);
+requestHandler = new RequestHandler(
+  __dirname,
+  resourcesDirAbsPath,
+  photosDirRelPath);
 
 // returns the ids list of all photos
 app.get("/api/photos/get-all-ids/", function(req, res) {
@@ -49,19 +52,19 @@ app.get("/api/photos/get-image/:photoId", function(req, res) {
 
 // returns a session code for the session associated with :listPhotoIds
 app.get("/api/ar/get-session-code/:listPhotoIds", function(req, res) {
-  let listPhotoIds = queryParser.convertQueryToList(req.params.listPhotoIds);
-  generateAndSendSessionCode(listPhotoIds, res);
+  let listPhotoIds = convertQueryToList(req.params.listPhotoIds);
+  requestHandler.generateAndSendSessionCode(listPhotoIds, res);
 });
 
 // returns the ids of the photos associated with the code :arSessionCode
 app.get("/api/ar/get-photo-ids/:arSessionCode", function(req, res) {
   let arSessionCode = req.params.arSessionCode;
-  sendPhotoIds(arSessionCode, res);
+  requestHandler.sendPhotoIds(arSessionCode, res);
 });
 
 app.get('/robots.txt', function (req, res) {
-    res.type('text/plain');
-    res.send("User-agent: *\nDisallow: /");
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
 });
 
 // returns the files in baseDir (front-end and photos resources)

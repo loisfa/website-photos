@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { ResponseContentType } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { PhotoModel } from '../models/business/PhotoModel';
+import { Photo } from '../models/business/Photo';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class APIHandler {
     this.urlARCode = this.urlBase + this.routeARCode;
   }
 
-  public getCode(listPhotos:Array<PhotoModel>) : Observable<string> {
+  public getCode(listPhotos:Array<Photo>) : Observable<string> {
     let stringPhotoNames = this.parseListToUrlString(listPhotos);
     let url:string = this.urlARCode + stringPhotoNames;
     console.log("apiHAndler asked code with url: "+url);
@@ -34,7 +34,7 @@ export class APIHandler {
       .catch(error => Observable.throw(error));
   }
 
-  private parseListToUrlString(listPhotos:Array<PhotoModel>):string {
+  private parseListToUrlString(listPhotos:Array<Photo>):string {
     let str:string="";
     for(let index=0; index<listPhotos.length; index++) {
       str += this.parse(listPhotos[index].getName());

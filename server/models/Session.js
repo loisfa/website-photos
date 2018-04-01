@@ -1,4 +1,4 @@
-const EXPIRATION_DURATION = 60; //min
+global.SESSION_EXPIRATION_DURATION = 60; //min
 
 class Session {
   constructor(code, listPhotoNames) {

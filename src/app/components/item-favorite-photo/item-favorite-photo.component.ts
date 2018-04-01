@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotosHandler } from '../../services/PhotosHandler.service'
-import { PhotoModel } from '../../models/business/PhotoModel';
+import { Photo } from '../../models/business/Photo';
 import { ModalPhotoComponent } from '../modal-photo/modal-photo.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
