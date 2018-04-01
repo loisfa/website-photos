@@ -1,55 +1,72 @@
-let fs    = require('fs');
+let fileSystem = require('fs');
 let Photo = require('./models/Photo.js');
 require('./utils/PhotoUtils.js');
 
 class PhotoHandler {
 
-  constructor(baseDir, directory) {
-    this.baseDir = baseDir;
-    this.directory = this.baseDir + directory;
+  constructor(resourcesDirAbsPath, photosRelativePath) {
+    this.resourcesDirAbsPath = resourcesDirAbsPath;
+    this.photosDirAbsPath = resourcesDirAbsPath + photosRelativePath;
     this.photos = {};
     this.listPhotoIds = [];
-    this.scanPhotoFolder();
+    this.fillPhotosAfterScan();
   }
 
-  getBaseDirectory() {
-    return this.baseDir;
+  /*
+   * Public methods
+   */
+  getPhotoIds() {
+    return this.listPhotoIds;
   }
 
-  scanPhotoFolder() {
-    fs.readdir(this.directory, (err, files) => {
-      console.log("Scanning directory: " + this.directory);
+  getPhoto(photoId) {
+    return this.photos[photoId];
+  }
+
+  getPhotos() {
+    return this.photos;
+  }
+
+  /*
+   * Private methods
+   */
+  fillPhotosAfterScan() {
+    fileSystem.readdir('.' + this.photosDirAbsPath, (err, files) => {
+      console.info("Scanning photos directory: " + this.photosDirAbsPath);
+
       if (err) {
         console.error(err);
-      } else if (files === undefined) {
-        console.log("No files found in directory: " + this.directory);
-      }
 
-      else {
+      } else if (files === undefined) {
+        console.error("No files found in directory: " + this.directory);
+
+      } else {
         files.forEach(filename => {
-          let extension = this.getExtension(filename);
-        	if (IMAGE_EXTENSIONS.includes(extension) === true) {
-            let imageFullPath = this.directory + '/' + filename;
-            console.log("Image full path: " + imageFullPath);
-            let fullPathFile = this.replaceExtension(
-              imageFullPath, extension, JSON_EXTENSION);
-        		fs.readFile(fullPathFile, 'utf8',  (err, data) => {
-        		  if (err) {
-          			if (err.code === 'ENOENT') {
-          			  console.error(fullPathFile + ' does not exist');
-          			  return;
-          			}
-        			throw err;
-        		  }
-              let properties = JSON.parse(data);
-              console.log("imageFullPath (before replacement of base directory): "
-                  + imageFullPath);
-        		  this.buildPhoto(imageFullPath, properties);
-        		});
-        	}
+          this.buildPhotoFromFilename(filename);
         });
       }
     });
+  }
+
+  buildPhotoFromFilename(filename) {
+    let fileExtension = this.getExtension(filename);
+    if (IMAGE_EXTENSIONS.includes(fileExtension) === true) {
+      let imageFullPath = this.photosDirAbsPath + '/' + filename;
+      let jsonFileFullPath = this.replaceExtension(
+        imageFullPath, fileExtension, JSON_EXTENSION);
+      fileSystem.readFile('.' + jsonFileFullPath, 'utf8',  (err, jsonData) => {
+        this.buildPhotoPropertiesFromJsonData(err, jsonData, imageFullPath);
+      });
+    }
+  }
+
+  buildPhotoPropertiesFromJsonData(err, jsonData, imageFullPath) {
+    if (err) {
+      console.warn(err);
+    } else {
+      let properties = JSON.parse(jsonData);
+      this.buildPhoto(imageFullPath, properties);
+    }
   }
 
   buildPhoto(imageFullPath, properties) {
@@ -66,17 +83,6 @@ class PhotoHandler {
     return pathWithoutBaseDir;
   }
 
-  getPhotoIds() {
-    return this.listPhotoIds;
-  }
-
-  getPhoto(photoId) {
-    return this.photos[photoId];
-  }
-
-  getPhotos() {
-    return this.photos;
-  }
 
   getExtension(filename) {
     let splitFile = filename.split('.');
