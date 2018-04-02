@@ -32,7 +32,7 @@ class RequestHandler {
         + ". Photo does not exist.");
     } else {
       let photoProperties = photo.getProperties();
-      res.send({"photoProperties":photoProperties});
+      res.send({"photoProperties": photoProperties});
       console.log("Sent the photo properties for photo id: " + photoId);
     }
   }

@@ -12,7 +12,7 @@ import { PhotosHandler } from '../../services/PhotosHandler.service';
 export class SectionMyFavoritesComponent implements OnInit {
 
   constructor(
-    public photosHandler:PhotosHandler  // should be private, but AOT compilation fails when private
+    public photosHandler: PhotosHandler  // should be private, but AOT compilation fails when private
   ) { }
 
   ngOnInit() {

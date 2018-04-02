@@ -1,7 +1,7 @@
 export interface MyObservable {
 
-  addObserver(observer:any):void;
+  addObserver(observer: any): void;
 
-  notifyObservers():void;
+  notifyObservers(): void;
 
 }

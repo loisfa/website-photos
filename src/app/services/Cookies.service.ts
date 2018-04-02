@@ -4,70 +4,71 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable()
 export class Cookies {
 
-  private listFavorites:Array<string>=[];
+  private myFavoritesList: Array<string> = [];
 
-  constructor(private cookieService:CookieService) {
+  constructor(private cookieService: CookieService) {
     if (this.cookieExists("MyFavorites")) {
-      this.setListFavorites();
+      this.setMyFavoritesList();
     } else {
-      this.listFavorites=[];
+      this.myFavoritesList = [];
     }
   }
 
-  public setListFavorites() {
-    this.listFavorites = [];
-    let listObject:Array<string> = this.getCookie("MyFavorites");
+  public setMyFavoritesList() {
+    this.myFavoritesList = [];
+    let listObject: Array<string> = this.getCookie("MyFavorites");
     for (let photoName of listObject) {
-      this.listFavorites.push(photoName);
+      this.myFavoritesList.push(photoName);
     }
   }
 
-  public cookieExists(cookieName:string):boolean {
+  public cookieExists(cookieName: string): boolean {
     return this.cookieService.get(cookieName) !== ""
       && this.cookieService.get(cookieName) !== undefined;
   }
 
-  private stringToArray(str:string):Array<string> {
+  private stringToArray(str: string): Array<string> {
     return str.split("&");
   }
-  private arrayToString(strList:Array<string>):string {
-    let str:string="";
-    for(let index=0; index<strList.length; index++) {
-      str+=strList[index];
-      if (index < strList.length-1) {
-        str+="&";
+  
+  private arrayToString(strList: Array<string>): string {
+    let str: string="";
+    for(let index = 0; index < strList.length; index++) {
+      str += strList[index];
+      if (index < strList.length - 1) {
+        str += "&";
       }
     }
     return str;
   }
 
-  private setCookie(cookieName:string, cookieList:Array<string>):void {
-    let cookieStr:string=this.arrayToString(cookieList);
+  private setCookie(cookieName: string, cookieList: Array<string>): void {
+    let cookieStr: string=this.arrayToString(cookieList);
     this.cookieService.set(cookieName, cookieStr);
   }
 
-  private getCookie(cookieName:string):Array<string> {
+  private getCookie(cookieName: string): Array<string> {
     return this.stringToArray(this.cookieService.get(cookieName));
   }
 
-  public isFavorite(photoName:string):boolean {
-    if (this.listFavorites.includes(photoName)) {
+  public isFavorite(photoName: string): boolean {
+    if (this.myFavoritesList.includes(photoName)) {
       return true;
     } else return false;
   }
-  
-  public setFavorite(photoName:string):void {
-    if (!(this.listFavorites.includes(photoName))) {
-      this.listFavorites.push(photoName);
-      this.setCookie("MyFavorites", this.listFavorites);
+
+  public setFavorite(photoName: string): void {
+    if (!(this.myFavoritesList.includes(photoName))) {
+      this.myFavoritesList.push(photoName);
+      this.setCookie("MyFavorites", this.myFavoritesList);
     }
   }
 
-  public unsetFavorite(photoName:string):void {
-    let index = this.listFavorites.indexOf(photoName);
+  public unsetFavorite(photoName: string): void {
+    let index = this.myFavoritesList.indexOf(photoName);
     if (index >= 0) {
-       this.listFavorites.splice(index, 1);
-       this.setCookie("MyFavorites", this.listFavorites);
+       this.myFavoritesList.splice(index, 1);
+       this.setCookie("MyFavorites", this.myFavoritesList);
     }
   }
 

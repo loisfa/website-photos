@@ -12,14 +12,15 @@ import { MyObserver } from '../models/technical/MyObserver';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements MyObserver {
-  private title = 'app';
-  private listPhotos:Array<Object>=[];
 
-  constructor(private photosHandler:PhotosHandler) {
+  private title: string = 'app';
+  private listPhotos: Array<Object> = [];
+
+  constructor(private photosHandler: PhotosHandler) {
     photosHandler.addObserver(this);
   }
 
-  public receiveNotification():void {
+  public receiveNotification(): void {
     this.listPhotos = this.photosHandler.getPhotos();
   }
 }

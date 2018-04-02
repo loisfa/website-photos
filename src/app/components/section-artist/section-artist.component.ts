@@ -11,7 +11,6 @@ export class SectionArtistComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

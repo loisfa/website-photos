@@ -4,7 +4,7 @@
 }
 
 .center {
-  text-align:center;
+  text-align: center;
 }
 .inline
 {
@@ -19,18 +19,18 @@
 
 .item-photo {
   background-color: white;
-  border:1px solid rgb(200,200,200);
-  border-radius:5px;
-  padding:10px;
-  margin:5px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 5px;
+  padding:1 0px;
+  margin: 5px;
 }
 .item-photo:hover {
   background-color: rgb(245,245,245);
 }
 .img-item-photo {
-  border-radius:3px;
-  max-height:50px;
-  max-width:100px;
+  border-radius: 3px;
+  max-height: 50px;
+  max-width: 100px;
 }
 
 #hamburger-menu-icon {
@@ -78,18 +78,18 @@ div .nav-icon {
 }
 div .active-section-title {
   display: none;
-  margin-left:10px;
+  margin-left: 10px;
   padding: 10px;
   font-size: 22px;
-  padding-bottom:0px;
-  color:white;
-  border-bottom:4px solid rgb(220,220,220);
+  padding-bottom: 0px;
+  color: white;
+  border-bottom: 4px solid rgb(220,220,220);
 }
 #side-bar {
-  display:none;
+  display: none;
   position: absolute;
-  background-color:rgb(30,30,30);
-  z-index:1;
+  background-color: rgb(30,30,30);
+  z-index: 1;
 }
 div .section-side-bar {
   cursor:pointer;

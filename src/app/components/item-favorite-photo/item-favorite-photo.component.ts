@@ -14,25 +14,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ItemFavoritePhotoComponent implements OnInit {
 
-  @Input() public photoProperties:Object;  // should be private, but AOT compilation fails when private
+  @Input() public photo: Photo;  // should be private, but AOT compilation fails when private
 
   constructor(
-    public photosHandler:PhotosHandler, // should be private, but AOT compilation fails when private
+    public photosHandler: PhotosHandler, // should be private, but AOT compilation fails when private
     public modalService: NgbModal, // should be private, but AOT compilation fails when private
-    public route:ActivatedRoute // should be private, but AOT compilation fails when private
+    public route: ActivatedRoute // should be private, but AOT compilation fails when private
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  public clickedPhoto():void {
+  public clickedPhoto(): void {
     const modalRef = this.modalService.open(ModalPhotoComponent);
-    modalRef.componentInstance.photoProperties = this.photoProperties;
+    modalRef.componentInstance.photo = this.photo;
   }
 
-  public clickedFavorite():void {
-    this.photosHandler.getPhoto(this.photoProperties["name"]).changeFavorite();
-    this.photoProperties = this.photosHandler.getPhoto(this.photoProperties["name"]).getProperties();
+  public clickedFavorite(): void {
+    this.photosHandler.getPhoto(this.photo.getId()).reverseIsFavorite();
+    /* TODO: In theory, next code line is useless.
+     * In Javascript (+TS): - primitive (number, string) are passed by values
+     *                      - objects / arrays are passed by reference
+     */
+    this.photo = this.photosHandler.getPhoto(this.photo.getId());
   }
 
 }

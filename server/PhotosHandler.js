@@ -79,7 +79,7 @@ class PhotosHandler {
   }
 
   buildPhoto(imageFullPath, properties) {
-    let photo = new Photo(this.removeBaseDir(imageFullPath), properties);
+    let photo = new Photo(this.removeResourcesDir(imageFullPath), properties);
     let photoId = photo.getPhotoId();
     if (this.photos[photoId] === undefined) {
       this.photos[photoId] = photo;
@@ -87,9 +87,10 @@ class PhotosHandler {
     }
   }
 
-  removeBaseDir(path) {
-    let pathWithoutBaseDir = path.replace(this.baseDir, "");
-    return pathWithoutBaseDir;
+  removeResourcesDir(path) {
+    console.log("this.resourcesDirAbsPath: " + this.resourcesDirAbsPath);
+    let pathWithoutResourcesDir = path.replace(this.resourcesDirAbsPath, "");
+    return pathWithoutResourcesDir;
   }
 
 

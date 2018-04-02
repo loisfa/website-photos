@@ -1,5 +1,5 @@
 export interface MyObserver {
 
-  receiveNotification():void;
-  
+  receiveNotification(): void;
+
 }

@@ -14,22 +14,22 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ThumbnailGalleryPhotoComponent implements OnInit {
 
-  @Input() public photoProperties:Object;  // should be private, but AOT compilation fails when private
+  @Input() public photo: Photo;  // should be private, but AOT compilation fails when private
 
   constructor(
-    private photosHandler:PhotosHandler,
+    private photosHandler: PhotosHandler,
     private modalService: NgbModal) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  public clickedFavorite():void {
-    this.photosHandler.getPhoto(this.photoProperties["name"]).changeFavorite();
-    this.photoProperties = this.photosHandler.getPhoto(this.photoProperties["name"]).getProperties();
+  public clickedFavorite(): void {
+    this.photosHandler.getPhoto(this.photo.getId()).reverseIsFavorite();
+    this.photo = this.photosHandler.getPhoto(this.photo.getId());
   }
 
-  public clickedPhoto():void {
+  public clickedPhoto(): void {
     const modalRef = this.modalService.open(ModalPhotoComponent);
-    modalRef.componentInstance.photoProperties = this.photoProperties;
+    modalRef.componentInstance.photo = this.photo;
   }
 
 }

@@ -22,10 +22,10 @@ import { ModalErrorComponent } from './components/modal-error/modal-error.compon
 
 
 const appRoutes: Routes = [
-  { path: 'gallery', component: SectionGalleryComponent, data: {"route":"/gallery"}},
-  { path: 'artist', component: SectionArtistComponent,  data: {"route":"/artist"}},
-  { path: 'my-favorites', component: SectionMyFavoritesComponent,  data: {"route":"/my-favorites"}},
-  { path: '**', component: SectionGalleryComponent,  data: {"route":"/gallery"}}
+  {path: 'gallery', component: SectionGalleryComponent, data: {"route":"/gallery"}},
+  {path: 'artist', component: SectionArtistComponent,  data: {"route":"/artist"}},
+  {path: 'my-favorites', component: SectionMyFavoritesComponent,  data: {"route":"/my-favorites"}},
+  {path: '**', component: SectionGalleryComponent,  data: {"route":"/gallery"}}
 ];
 
 @NgModule({

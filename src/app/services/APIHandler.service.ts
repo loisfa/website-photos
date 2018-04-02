@@ -8,71 +8,66 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class APIHandler {
 
-  private urlBase = environment.url;
-  private routeAllPhotoNames:string = "api/photos/";
-  private routePhotoUri:string = "api/photo/uri/";
-  private routeARCode:string = "api/ar/web/";
-  private urlAllPhotoNames:string;
-  private urlPhoto:string;
-  private urlARCode:string;
+  private routeAllPhotoNames: string = "api/photos/get-all-ids/";
+  private routePhotoProperties: string = "api/photos/get-properties/";
+  private routeARCode: string = "api/ar/get-session-code/";
+
+  private rootUrl: string = environment.url;
+
+  private urlAllPhotoNames: string;
+  private urlPhotoProperties: string;
+  private urlARCode: string;
 
   constructor(private http: HttpClient) {
-    console.log("Api url: " + this.urlBase);
-    this.urlAllPhotoNames = this.urlBase + this.routeAllPhotoNames;
-    this.urlPhoto = this.urlBase + this.routePhotoUri;
-    this.urlARCode = this.urlBase + this.routeARCode;
+    console.log("API root url: " + this.rootUrl);
+    this.urlAllPhotoNames = this.rootUrl + this.routeAllPhotoNames;
+    this.urlPhotoProperties = this.rootUrl + this.routePhotoProperties;
+    this.urlARCode = this.rootUrl + this.routeARCode;
   }
 
-  public getCode(listPhotos:Array<Photo>) : Observable<string> {
-    let stringPhotoNames = this.parseListToUrlString(listPhotos);
-    let url:string = this.urlARCode + stringPhotoNames;
-    console.log("apiHAndler asked code with url: "+url);
+  public getCode(listPhotos: Array<Photo>): Observable<string> {
+    let stringPhotoNames: string = this.parseListToUrlString(listPhotos);
+    let url: string = this.urlARCode + stringPhotoNames;
+    console.log("APIHAndler asked code with url: " + url);
     return this.http.get(url)
-      .map(res => {
-        return res;
-      })
+      .map(res => { return res; })
       .catch(error => Observable.throw(error));
   }
 
-  private parseListToUrlString(listPhotos:Array<Photo>):string {
-    let str:string="";
-    for(let index=0; index<listPhotos.length; index++) {
+  private parseListToUrlString(listPhotos: Array<Photo>): string {
+    let str: string = "";
+    for(let index = 0; index < listPhotos.length; index++) {
       str += this.parse(listPhotos[index].getName());
-      if (index < listPhotos.length-1) {
-        str+= "&";
+      if (index < listPhotos.length - 1) {
+        str += "&";
       }
     }
     return str;
   }
 
-  public getAllPhotoNames():Observable<Array<string>> {
-    let photoNames:string;
+  public getAllPhotoIds(): Observable<Array<string>> {
     return this.http.get(this.urlAllPhotoNames)
-      .map(res => {
-        return res;
-      })
+      .map(res => { return res; })
       .catch(error => Observable.throw(error));
   }
 
-  public getPhoto(unparsedName:string):Observable<any> {
-    let photoName:string = this.parse(unparsedName);
-    let url:string = this.urlPhoto + photoName;
-    let image:any[];
+  public getPhotoProperties(photoId: string): Observable<any> {
+    let url: string = this.urlPhotoProperties + photoId;
     return this.http.get(url)
       .map(res => { return res; })
       .catch(error => Observable.throw(error));
     }
 
-  private parse(unparsedString:string):string {
+  private parse(unparsedString: string): string {
     let re = / /gi;
-    let parsedString:string = unparsedString.replace(re, '+');
-    console.log("parsedString: "+parsedString);
-    console.log("parsedString: "+parsedString);
+    let parsedString: string = unparsedString.replace(re, '+');
+    console.log("parsedString: " + parsedString);
     return parsedString;
   }
 
-  private parseToList(unparsedString:string):Array<string> {
+  private parseToList(unparsedString: string): Array<string> {
     let listStrings = unparsedString.split('&');
     return listStrings;
   }
+
 }

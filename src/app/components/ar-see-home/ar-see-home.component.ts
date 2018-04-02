@@ -3,6 +3,7 @@ import { PhotosHandler } from '../../services/PhotosHandler.service';
 import { Observable } from 'rxjs/Rx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalErrorComponent } from '../modal-error/modal-error.component';
+import { ErrorMessage } from '../../models/business/ErrorMessage';
 
 /* This component is designed for the "See <3 at home" sub-section. It hosts:
   - video tutorial
@@ -15,28 +16,30 @@ import { ModalErrorComponent } from '../modal-error/modal-error.component';
 })
 export class ArSeeHomeComponent implements OnInit {
 
-  @Input() public code:string; // should be private, but AOT compilation fails when private
+  @Input() public sessionCode: string; // should be private, but AOT compilation fails when private
 
   constructor(
-    private photosHandler:PhotosHandler,
-    private modalService: NgbModal) { }
+    private photosHandler: PhotosHandler,
+    private modalService: NgbModal
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  public clickedGenerateCode():void {
+  public clickedGenerateCode(): void {
+
     if (this.photosHandler.getFavoritePhotos().length >= 1) {
       this.photosHandler.generateCode().subscribe(
         data => {
-          this.code = data["arSessionCode"];
+          this.sessionCode = data["arSessionCode"];
         }
       );
-  } else {
+
+    } else {
+      let title: string = "No Favorites selected";
+      let content: string = "You should select at least one favorite before generating a CODE";
       const modalRef = this.modalService.open(ModalErrorComponent);
-      modalRef.componentInstance.errorMessage = {
-        "title": "No Favorites selected",
-        "content": "You should select at least one favorite before generating a CODE"
-      };
+      modalRef.componentInstance.errorMessage = new ErrorMessage(title, content);
     }
+
   }
 }

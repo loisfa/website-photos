@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorMessage } from '../../models/business/ErrorMessage';
 
 /* This component is designed to disaply the error of the AR section into a
   modal window.
@@ -12,15 +13,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalErrorComponent implements OnInit {
 
-  @Input() public errorMessage:Object={};
+  @Input() public errorMessage: ErrorMessage;
+    // TODO: create an errorMessage class in /models
 
   constructor(
-    public activeModal:NgbActiveModal
+    public activeModal: NgbActiveModal
       // should be private, but AOT compilation fails when private
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public clickedClose() {
     this.activeModal.dismiss('Cross click');
