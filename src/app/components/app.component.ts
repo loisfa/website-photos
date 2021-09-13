@@ -12,7 +12,6 @@ import { MyObserver } from '../models/technical/MyObserver';
 })
 export class AppComponent implements MyObserver {
 
-  private title: string = 'app';
   private listPhotos: Array<Object> = [];
 
   constructor(private photosHandler: PhotosHandler) {

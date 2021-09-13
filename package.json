@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "ng serve",
-    "start:dev": "NODE_ENV=dev node server.js",
     "start": "node server.js",
+    "start:dev": "NODE_ENV=dev node server.js",
     "build": "ng build --prod --build-optimizer --verbose",
     "build:dev": "ng build",
     "test": "mocha server/test/**/*.spec.js",

@@ -7,7 +7,7 @@ export class Cookies {
   private myFavoritesList: Array<string> = [];
 
   constructor(private cookieService: CookieService) {
-    if (this.cookieExists("MyFavorites")) {
+    if (this.cookieExists('MyFavorites')) {
       this.setMyFavoritesList();
     } else {
       this.myFavoritesList = [];
@@ -16,34 +16,34 @@ export class Cookies {
 
   public setMyFavoritesList() {
     this.myFavoritesList = [];
-    let listObject: Array<string> = this.getCookie("MyFavorites");
-    for (let photoName of listObject) {
+    const listObject: Array<string> = this.getCookie('MyFavorites');
+    for (const photoName of listObject) {
       this.myFavoritesList.push(photoName);
     }
   }
 
   public cookieExists(cookieName: string): boolean {
-    return this.cookieService.get(cookieName) !== ""
+    return this.cookieService.get(cookieName) !== ''
       && this.cookieService.get(cookieName) !== undefined;
   }
 
   private stringToArray(str: string): Array<string> {
-    return str.split("&");
+    return str.split('&');
   }
-  
+
   private arrayToString(strList: Array<string>): string {
-    let str: string="";
-    for(let index = 0; index < strList.length; index++) {
+    let str = '';
+    for (let index = 0; index < strList.length; index++) {
       str += strList[index];
       if (index < strList.length - 1) {
-        str += "&";
+        str += '&';
       }
     }
     return str;
   }
 
   private setCookie(cookieName: string, cookieList: Array<string>): void {
-    let cookieStr: string=this.arrayToString(cookieList);
+    const cookieStr: string = this.arrayToString(cookieList);
     this.cookieService.set(cookieName, cookieStr);
   }
 
@@ -54,21 +54,23 @@ export class Cookies {
   public isFavorite(photoName: string): boolean {
     if (this.myFavoritesList.includes(photoName)) {
       return true;
-    } else return false;
+    } else {
+      return false;
+    }
   }
 
   public setFavorite(photoName: string): void {
     if (!(this.myFavoritesList.includes(photoName))) {
       this.myFavoritesList.push(photoName);
-      this.setCookie("MyFavorites", this.myFavoritesList);
+      this.setCookie('MyFavorites', this.myFavoritesList);
     }
   }
 
   public unsetFavorite(photoName: string): void {
-    let index = this.myFavoritesList.indexOf(photoName);
+    const index = this.myFavoritesList.indexOf(photoName);
     if (index >= 0) {
        this.myFavoritesList.splice(index, 1);
-       this.setCookie("MyFavorites", this.myFavoritesList);
+       this.setCookie('MyFavorites', this.myFavoritesList);
     }
   }
 

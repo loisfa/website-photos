@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotosHandler } from '../../services/PhotosHandler.service';
 
-/* This component is designed for the "My favorites" section.
+/* This component is designed for the 'My favorites' section.
   NB: it also hosts the ar-see-home component
   */
 @Component({
@@ -15,7 +15,7 @@ export class SectionMyFavoritesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("this.photosHandler.getFavoritePhotos()");
+    console.log('this.photosHandler.getFavoritePhotos()');
     console.log(this.photosHandler.getFavoritePhotos());
   }
 

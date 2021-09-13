@@ -13,19 +13,19 @@ export class Photo {
   private isFavoriteBool: boolean;
 
   constructor(photoProperties: Object, private cookieService: Cookies) {
-    this.id = photoProperties["id"];
-    this.name = photoProperties["name"];
-    this.uri = photoProperties["uri"];
-    this.price = photoProperties["price"];
-    let dimensions: Object = photoProperties["dimensions"];
+    this.id = photoProperties['id'];
+    this.name = photoProperties['name'];
+    this.uri = photoProperties['uri'];
+    this.price = photoProperties['price'];
+    const dimensions: Object = photoProperties['dimensions'];
     this.dimensions = new Dimensions(
-      dimensions["width"], dimensions["height"], dimensions["orientation"]);
-    this.description = photoProperties["description"];
-    this.keywords = photoProperties["keywords"];
+      dimensions['width'], dimensions['height'], dimensions['orientation']);
+    this.description = photoProperties['description'];
+    this.keywords = photoProperties['keywords'];
   }
 
   public reverseIsFavorite(): void {
-    if (this.isFavorite() == true) {
+    if (this.isFavorite() === true) {
       this.setAsNotFavorite();
     } else {
       this.setAsFavorite();

@@ -1,10 +1,10 @@
-const URI_KEY = "uri";
-const ID_KEY = "id";
+const URI_KEY = 'uri';
+const ID_KEY = 'id';
 const PROPERTY_KEY_LIST =
-    ["name", "dimensions", "keywords", "price", URI_KEY, ID_KEY];
-const SLASH = "/";
-require("../utils/StringUtils.js");
-PhotoUtils = require("../utils/PhotoUtils.js");
+    ['name', 'dimensions', 'keywords', 'price', URI_KEY, ID_KEY];
+const SLASH = '/';
+require('../utils/StringUtils.js');
+PhotoUtils = require('../utils/PhotoUtils.js');
 
 class Photo {
 
@@ -35,7 +35,7 @@ class Photo {
    * Private methods
    */
   getUndefinedProperties() {
-    let undefinedProperties = {};
+    const undefinedProperties = {};
     PROPERTY_KEY_LIST.forEach(function(propertyKey) {
       undefinedProperties[propertyKey] = undefined;
     });
@@ -43,28 +43,28 @@ class Photo {
   }
 
   setProperties(properties) {
-    for (let propertyKey in properties) {
+    for (const propertyKey in properties) {
       if (properties[propertyKey] != undefined) {
         this.properties[propertyKey] = properties[propertyKey];
       } else {
-        console.log(this.imagePath + " has no property key " + propertyKey);
+        console.log(this.imagePath + ' has no property key ' + propertyKey);
       }
     }
   }
 
   // returns my_image from my_path/**/my_image.png
   getIdFromPath(imagePath) {
-    let imagePathSplit = imagePath.split(SLASH);
-    let filename = imagePathSplit[imagePathSplit.length-1];
+    const imagePathSplit = imagePath.split(SLASH);
+    const filename = imagePathSplit[imagePathSplit.length-1];
     let filenameSplit;
     IMAGE_EXTENSIONS.forEach(function(imageExtension) {
       if (filename.indexOf(imageExtension) >= 0) {
         filenameSplit = filename.split(imageExtension);
       }
     });
-    let id = filenameSplit[0];
+    const id = filenameSplit[0];
     if (containsSpace(id)) {
-      log.error("The filename cannot contain space. Filename: " + filename);
+      log.error('The filename cannot contain space. Filename: ' + filename);
     }
     return id;
   }
@@ -74,7 +74,7 @@ class Photo {
     if (this.isAProperty(propertyKey)) {
       this.properties[propertyKey] = propertyValue;
     } else {
-      log.warn(propertyKey + " does not belong to the property key list.");
+      log.warn(propertyKey + ' does not belong to the property key list.');
     }
   }
 

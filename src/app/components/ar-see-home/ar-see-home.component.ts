@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { ErrorMessage } from '../../models/business/ErrorMessage';
 
-/* This component is designed for the "See <3 at home" sub-section. It hosts:
+/* This component is designed for the 'See <3 at home' sub-section. It hosts:
   - video tutorial
   - step by step process to guide user
   */
@@ -28,13 +28,13 @@ export class ArSeeHomeComponent implements OnInit {
     if (this.photosHandler.getFavoritePhotos().length >= 1) {
       this.photosHandler.generateCode().subscribe(
         data => {
-          this.sessionCode = data["arSessionCode"];
+          this.sessionCode = data['arSessionCode'];
         }
       );
 
     } else {
-      let title: string = "No Favorites selected";
-      let content: string = "You should select at least one favorite before generating a CODE";
+      const title = 'No Favorites selected';
+      const  content = 'You should select at least one favorite before generating a CODE';
       const modalRef = this.modalService.open(ModalErrorComponent);
       modalRef.componentInstance.errorMessage = new ErrorMessage(title, content);
     }

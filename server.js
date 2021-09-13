@@ -7,7 +7,7 @@ const convertQueryToList = require('./server/utils/QueryUtils.js');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 const DEV='dev';
 const nodeEnv=process.env.NODE_ENV;
@@ -19,10 +19,6 @@ if (dotEnv.load()) { // loads environment from .env file of root directory
   console.log("Loaded '.env' file. resourcesPath: " + resourcesPath);
   if (nodeEnv === DEV) {
     console.log("Dev environment - use of cors.");
-    const corsOptions = {
-      origin: 'http://localhost:4200',
-      optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-    }
     app.use(cors());
   } else {
     console.log("Prod environment.");

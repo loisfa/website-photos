@@ -14,34 +14,34 @@ export class PhotosHandler implements MyObservable {
 
   constructor(private apiHandler: APIHandler, private cookieService: Cookies) {
 
-    let cookieExists: boolean = this.cookieService.cookieExists("MyFavorites");
+    const cookieExists: boolean = this.cookieService.cookieExists('MyFavorites');
 
-    this.apiHandler.getAllPhotoIds().subscribe(data => {
-      console.log("photo ids: " + data);
-      let listPhotoIds: Array<string> = data;
-      let count: number = 0;
-      for (let photoId of listPhotoIds) {
+    this.apiHandler.getAllPhotoIds().subscribe((ids: string[]) => {
+      console.log('photo ids: ' + ids);
+      const listPhotoIds: Array<string> = ids;
+      let count = 0;
+      for (const photoId of listPhotoIds) {
         this.apiHandler.getPhotoProperties(photoId).subscribe(data => {
-          console.log("photo data: ");
+          console.log('photo data: ');
           console.log(data);
-          let photo: Photo = new Photo(data.photoProperties, this.cookieService);
+          const photo: Photo = new Photo(data.photoProperties, this.cookieService);
           if (cookieExists && this.cookieService.isFavorite(photoId)) {
             photo.setAsFavorite();
           }
           this.photosList.push(photo);
 
-          // TODO: explain whats the point of the following lines
+          // TODO: explain what is the point of the following lines
           count++;
           if (count >= listPhotoIds.length) {
             this.notifyObservers();
           }
-        })
+        });
       }
     });
   }
 
   public generateCode(): Observable<string> {
-    console.log("Photos Handler requested a session code.");
+    console.log('Photos Handler requested a session code.');
     return this.apiHandler.getCode(this.photosList);
   }
 
@@ -50,8 +50,8 @@ export class PhotosHandler implements MyObservable {
   }
 
   public notifyObservers(): void {
-    for (let index in this.observersList) {
-      this.observersList[index].receiveNotification();
+    for (const observer of this.observersList) {
+      observer.receiveNotification();
     }
   }
 
@@ -60,8 +60,8 @@ export class PhotosHandler implements MyObservable {
   }
 
   public getFavoritePhotos(): Array<Photo> {
-    let favoritePhotosList: Array<Photo>=[];
-    for(let photo of this.photosList) {
+    const favoritePhotosList: Array<Photo> = [];
+    for (const photo of this.photosList) {
       if (photo.isFavorite()) {
         favoritePhotosList.push(photo);
       }
@@ -70,8 +70,8 @@ export class PhotosHandler implements MyObservable {
   }
 
   public getPhoto(photoId: string): Photo {
-    for(let index in this.photosList) {
-      if (this.photosList[index].getId() == photoId) {
+    for (const index in this.photosList) {
+      if (this.photosList[index].getId() === photoId) {
         return this.photosList[index];
       }
     }
