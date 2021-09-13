@@ -1,9 +1,11 @@
 <div class="inline item-photo cursor-pointer" (click)="clickedPhoto()">
-  <img class="inline img-item-photo" src="{{photo.getUri()}}" (click)="clickedPhoto()"/>
+  <img class="inline item-photo-img" src="{{photo.getUri()}}" (click)="clickedPhoto()"/>
   <div class="inline" style="margin-left:10px;">
-   <h5>
-     {{photo.getName()}}
-   </h5>
+    <div style="display: flex;">
+      <div class="item-photo-title">
+        {{photo.getName()}}
+      </div>
+    </div>
    </div>
    <button class="btn btn-danger btn-remove-favorite" data-toggle="tooltip" title="Remove from my favorites"
    (click)="clickedFavorite()">

@@ -24,18 +24,27 @@
   background-color: white;
   border: 1px solid rgb(200,200,200);
   border-radius: 5px;
-  padding: 1 0px;
+  padding: 10px;
   margin: 5px;
+  margin-right: 15px;
 }
 
 .item-photo:hover {
   background-color: rgb(245,245,245);
 }
 
-.img-item-photo {
+.item-photo-img {
   border-radius: 3px;
   max-height: 50px;
   max-width: 100px;
+}
+
+.item-photo-title {
+  text-overflow: ellipsis;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 19px;
 }
 
 #nav-bar {
@@ -53,7 +62,6 @@
 }
 
 div .horizontal-section-titles {
-  background: green;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -191,6 +199,8 @@ div .section-side-bar:hover {
 }
 
 div .ar-background {
+  padding-top: 25px;
+  padding-bottom: 25px;
   background-image: url("/assets/wallpaper/tile-blue-light.jpg");
   background-repeat: repeat;
   width: 100%;
@@ -201,8 +211,22 @@ div .ar-background {
   padding-bottom: 0px;
 }
 
+.ar-guidelines-text {
+  text-align: left;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 0px;
+}
+
 #demo-button {
   padding-bottom: 0px;
+}
+
+div .favorite-items {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 30px;
 }
 
 #button-add-favorites {
@@ -237,16 +261,19 @@ div .ar-background {
 #artist-name-title {/* nothing yet */}
 
 .btn-remove-favorite {
+  position: fixed;
+  margin-left: -7px;
+  margin-top: -18px;
   padding: 0px;
-  padding-bottom: 21px;
-  margin-left: 10px;
-  height: 20px;
-  width: 20px;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
 }
 
 @media screen and (max-width: 500px) {
   div .nav-title {display: none;}
   div .active-section-title {display: inline;}
   div .hamburger-menu-btn {display: inline;}
+  .item-photo-title { max-width: 120px; }
   #side-bar {display: inline;}
 }

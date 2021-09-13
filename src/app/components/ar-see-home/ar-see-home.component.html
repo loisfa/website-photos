@@ -1,26 +1,10 @@
-<br>
 <div class="center ar-background">
-  <br>
-  <div class="ar-title">
-    <div>
-      <h4>
-        See your <img style="height:24px" src="./assets/icons/heart-fill-red.png"> photos on your walls  !
-      </h4>
-    </div>
-    <div>
-      <h6>
-        with Augmented Reality...
-      </h6>
-    </div>
-  </div>
-  <br>
-  <button id="demo-button" class="btn btn-danger cursor-pointer border-round" >
-    <h5>
-      <img src="/assets/icons/play.png" style="width:28px;"/> Watch the DEMO
-    </h5>
-  </button>
-  <br><br>
-  <div class="container-fluid">
+  
+  <h4>
+    See photos on your own walls with <span style="color: #e04b4b; font-weight: bold;">Augmented Reality</span>!
+  </h4>
+
+  <div class="container-fluid" style="padding: 15px;">
     <div class="row">
       <div class="col-lg-4">
         <div class="ar-step-div">
@@ -28,15 +12,14 @@
             <b>Step 1</b>
           </h5>
           <hr>
-          <p align="left">
-            > Download the Android app on your spartphone
+          <p class="ar-guidelines-text">
+            a. Download the Android APK on your spartphone:
           </p>
           <a class="btn btn-success" target="_self" href="/assets/apk/ar-photo-visu.apk" download="photo-app.apk">
-            Download the app <img src="/assets/icons/android-white.png" style="width:24px;"/>
+            Download app <img src="/assets/icons/android-white.png" style="width:24px;"/>
           </a>
-          <br><br>
-          <p align="left">
-            > Open the Android app
+          <p class="ar-guidelines-text">
+            b. Install the app.
           </p>
         </div>
       </div>
@@ -46,15 +29,14 @@
             <b>Step 2</b>
           </h5>
           <hr>
-          <p align="left">
-            > Print the following marker on an A4 paper
+          <p class="ar-guidelines-text">
+            a. Print the marker on an A4 paper:
           </p>
           <a class="btn btn-success" target="_self" href="/assets/pdf/marker_stones_height20cm.pdf" download="marker.pdf">
-            Dowload the .pdf marker <img src="/assets/icons/pdf-white.png" style="width:24px;"/>
+            Dowload marker <img src="/assets/icons/pdf-white.png" style="width:24px;"/>
           </a>
-          <br><br>
-          <p align="left">
-            > Fix the printed marker on your wall
+          <p class="ar-guidelines-text">
+            b. Fix the marker on the wall where you want to display the photo.
           </p>
         </div>
       </div>
@@ -64,26 +46,27 @@
             <b>Step 3</b>
           </h5>
           <hr>
-          <p align="left">
-            > Generate a CODE*<br>
-            <span id="step-caption">
-              *whenever you modify your <img style="height:12px" src="./assets/icons/heart-fill-red.png"><br>
-              *available 1 hour's time
-            </span>
+          <p class="ar-guidelines-text">
+            b. Generate your session CODE:
           </p>
           <button class="btn btn-info cursor-pointer" (click)="clickedGenerateCode()">
             Generate CODE<br>
           </button>
-          <br><br>
-          <p align="left">
-             > Type the CODE <b>{{this.sessionCode}}</b> on the Android app
+          <p class="ar-guidelines-text">
+            c. Open the Android app.
           </p>
-          <p align="left">
-            > That's it !
+          <p class="ar-guidelines-text">
+            d. In the app, enter your CODE{{this.sessionCode ? ': ' + this.sessionCode : ''}}.
           </p>
+          <p class="ar-guidelines-text">
+            e. In the app, point the camera toward the tracker on the wall.
+          </p>
+          <p class="ar-guidelines-text">
+            f. The magic should happen!
+          </p>
+
         </div>
       </div>
     </div>
   </div>
-  <br>
 </div>
