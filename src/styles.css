@@ -1,3 +1,4 @@
+
 .wallpaper {
   background-image: url("/assets/wallpaper/tile-light-light.jpg");
   background-repeat: repeat;
@@ -6,13 +7,15 @@
 .center {
   text-align: center;
 }
-.inline
-{
+
+.inline {
   display: inline-block;
 }
+
 .cursor-pointer {
-   cursor:pointer;
+  cursor: pointer;
 }
+
 .border-round {
   border-radius: 1000px;
 }
@@ -21,61 +24,81 @@
   background-color: white;
   border: 1px solid rgb(200,200,200);
   border-radius: 5px;
-  padding:1 0px;
+  padding: 1 0px;
   margin: 5px;
 }
+
 .item-photo:hover {
   background-color: rgb(245,245,245);
 }
+
 .img-item-photo {
   border-radius: 3px;
   max-height: 50px;
   max-width: 100px;
 }
 
-#hamburger-menu-icon {
-  width:32px;
-  margin:10px;
-  position:fixed;
+#nav-bar {
+  position: fixed;
+  z-index: 1; 
+  background: rgb(30,30,30); 
+  width: 100%; 
+  min-height: 47px;
 }
-div .nav-bar {
-  text-align: center;
-  color:red;
-  background-color:rgb(30,30,30);
-  border-bottom:0px solid black;
-  width:100%;
+
+#hamburger-menu-icon {
+  width: 32px;
+  margin: 4px;
+  position: fixed;
+}
+
+div .horizontal-section-titles {
+  background: green;
   display: flex;
   justify-content: center;
-  position:fixed;
-  z-index:1;
-  min-height: 45px;
+  width: 100%;
 }
+
 div .nav-title {
-  margin-left:10px;
+  margin-left: 10px;
   padding: 10px;
   display: inline;
   font-size: 22px;
-  padding-bottom:0px;
+  padding-bottom: 0px;
 }
+
 div .nav-title:hover {
-  color:rgb(200,200,200);
-  border-bottom:4px solid rgb(220,220,220);
-  cursor:pointer;
+  color: rgb(200,200,200);
+  border-bottom: 4px solid rgb(220,220,220);
+  cursor: pointer;
 }
+
 div .section-on {
-  color:white;
-  border-bottom:4px solid rgb(220,220,220);
+  color: white;
+  border-bottom: 4px solid rgb(220,220,220);
 }
+
 div .section-off {
-  color:rgb(150,150,150);
-  border-bottom:3px solid rgb(150,150,150);
+  color: rgb(150,150,150);
+  border-bottom: 3px solid rgb(150,150,150);
 }
-div .nav-icon {
+
+div .hamburger-menu-btn {
+  background: black;
+  border: 1px solid gray;
+  border-radius: 2px;
+  margin: 2px;
+  height: 40px;
+  width: 40px;
   display: none;
   cursor: pointer;
   position: fixed;
   z-index: 2;
 }
+div .hamburger-menu-btn:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
 div .active-section-title {
   display: none;
   margin-left: 10px;
@@ -85,85 +108,86 @@ div .active-section-title {
   color: white;
   border-bottom: 4px solid rgb(220,220,220);
 }
+
 #side-bar {
   display: none;
   position: absolute;
   background-color: rgb(30,30,30);
   z-index: 1;
+  margin-top: 48px; 
+  width: 180px;
 }
+
 div .section-side-bar {
-  cursor:pointer;
-  background-color:rgb(30,30,30);
-  color:rgb(170,170,170);
-  font-size:18px;
-  padding:10px;
-  margin:5px;
+  cursor: pointer;
+  background-color: rgb(30,30,30);
+  color: rgb(170,170,170);
+  font-size: 18px;
+  padding: 8px;
+  margin: 8px;
+  border-left: 3px solid rgb(150,150,150);
 }
+
 div .section-side-bar:hover {
-  cursor:pointer;
-  background-color:rgb(30,30,30);
-  color:rgb(230,230,230);
-  font-size:18px;
-  padding:10px;
-  margin:5px;
-}
-@media screen and (max-width: 500px) {
-  div .nav-title {display: none;}
-  div .active-section-title {display: inline;}
-  div .nav-icon {display: inline;}
-  #side-bar {display: inline;}
+  cursor: pointer;
+  background-color: rgb(30,30,30);
+  color: rgb(230,230,230);
+  border-left: 3px solid rgb(220,220,220);
 }
 
 .details-thumbnail-photo {
-   color:gray;
-   margin:0px;
-   padding:0px;
-   margin-left:10px;
+  color: gray;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 10px;
 }
+
 .photo-thumbnail {
-  border:1px solid rgb(200,200,200);
+  border: 1px solid rgb(200,200,200);
   background-color:white;
-  border-radius:5px;
-  padding-top:20px;
-  padding-left:20px;
-  padding-right:20px;
-  margin:5px;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 5px;
 }
 
 .image-zoom {
-  max-height:180px;
-  max-width:100%;
-  cursor:pointer;
+  max-height: 180px;
+  max-width: 100%;
+  cursor: pointer;
   -webkit-transition: all 0.2s ease; /* Safari and Chrome */
   -moz-transition: all 0.2s ease; /* Firefox */
   -ms-transition: all 0.2s ease; /* IE 9 */
   -o-transition: all 0.2s ease; /* Opera */
   transition: all 0.2s ease;
 }
+
 .image-zoom:hover {
-  -webkit-transform:scale(1.05); /* Safari and Chrome */
-  -moz-transform:scale(1.05); /* Firefox */
-  -ms-transform:scale(1.05); /* IE 9 */
-  -o-transform:scale(1.05); /* Opera */
-   transform:scale(1.05);
+  -webkit-transform: scale(1.05); /* Safari and Chrome */
+  -moz-transform: scale(1.05); /* Firefox */
+  -ms-transform: scale(1.05); /* IE 9 */
+  -o-transform: scale(1.05); /* Opera */
+  transform: scale(1.05);
 }
 
 .image-zoom-high {
-  max-height:180px;
-  max-width:100%;
-  cursor:pointer;
+  max-height: 180px;
+  max-width: 100%;
+  cursor: pointer;
   -webkit-transition: all 0.2s ease; /* Safari and Chrome */
   -moz-transition: all 0.2s ease; /* Firefox */
   -ms-transition: all 0.2s ease; /* IE 9 */
   -o-transition: all 0.2s ease; /* Opera */
   transition: all 0.2s ease;
 }
+
 .image-zoom-high:hover {
-  -webkit-transform:scale(1.2); /* Safari and Chrome */
-  -moz-transform:scale(1.2); /* Firefox */
-  -ms-transform:scale(1.2); /* IE 9 */
-  -o-transform:scale(1.2); /* Opera */
-   transform:scale(1.2);
+  -webkit-transform: scale(1.2); /* Safari and Chrome */
+  -moz-transform: scale(1.2); /* Firefox */
+  -ms-transform: scale(1.2); /* IE 9 */
+  -o-transform: scale(1.2); /* Opera */
+  transform: scale(1.2);
 }
 
 div .ar-background {
@@ -171,37 +195,41 @@ div .ar-background {
   background-repeat: repeat;
   width: 100%;
 }
+
 .ar-title {
-   color:rgb(80,80,120);
-   padding-bottom:0px;
+  color: rgb(80,80,120);
+  padding-bottom: 0px;
 }
 
- #demo-button {
-   padding-bottom:0px;
- }
+#demo-button {
+  padding-bottom: 0px;
+}
 
 #button-add-favorites {
-   margin:10px;
-   padding:10px;
-   padding-top:17px;
-   height:65px;
-   font-size:18px;
+  margin: 10px;
+  padding: 10px;
+  padding-top: 17px;
+  height: 65px;
+  font-size: 18px;
  }
 
  div .ar-step-div {
-   border:1px solid rgb(200,200,200);
-   border-radius:3px;
-   margin:5px;
-  padding:10px;
-  background-color:rgb(250,250,250)
+  border: 1px solid rgb(200,200,200);
+  border-radius: 3px;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(250,250,250)
  }
-#step-caption {
-  color:rgb(160,160,160);
-  font-size:16px;
+
+ #step-caption {
+  color: rgb(97, 96, 96);
+  font-size: 16px;
 }
+
 .page {
-  padding-top:60px;
+  padding-top: 60px;
 }
+
 .white-bg {
   background-color: white;
 }
@@ -209,9 +237,16 @@ div .ar-background {
 #artist-name-title {/* nothing yet */}
 
 .btn-remove-favorite {
-  padding:0px;
-  padding-bottom:21px;
-  margin-left:10px;
-  height:20px;
-  width:20px;
+  padding: 0px;
+  padding-bottom: 21px;
+  margin-left: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  div .nav-title {display: none;}
+  div .active-section-title {display: inline;}
+  div .hamburger-menu-btn {display: inline;}
+  #side-bar {display: inline;}
 }

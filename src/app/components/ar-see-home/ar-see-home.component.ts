@@ -11,8 +11,7 @@ import { ErrorMessage } from '../../models/business/ErrorMessage';
   */
 @Component({
   selector: 'app-ar-see-home',
-  templateUrl: './ar-see-home.component.html',
-  styleUrls: ['./ar-see-home.component.css']
+  templateUrl: './ar-see-home.component.html'
 })
 export class ArSeeHomeComponent implements OnInit {
 

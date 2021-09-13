@@ -20,12 +20,11 @@ import { ArSeeHomeComponent } from './components/ar-see-home/ar-see-home.compone
 import { ModalPhotoComponent } from './components/modal-photo/modal-photo.component';
 import { ModalErrorComponent } from './components/modal-error/modal-error.component';
 
-
 const appRoutes: Routes = [
   {path: 'gallery', component: SectionGalleryComponent, data: {"route":"/gallery"}},
   {path: 'artist', component: SectionArtistComponent,  data: {"route":"/artist"}},
   {path: 'my-favorites', component: SectionMyFavoritesComponent,  data: {"route":"/my-favorites"}},
-  {path: '**', component: SectionGalleryComponent,  data: {"route":"/gallery"}}
+  {path: '*', component: SectionGalleryComponent,  data: {"route":"/gallery"}}
 ];
 
 @NgModule({

@@ -8,8 +8,7 @@ import { Photo } from '../../models/business/Photo';
   */
 @Component({
   selector: 'app-modal-photo',
-  templateUrl: './modal-photo.component.html',
-  styleUrls: ['./modal-photo.component.css']
+  templateUrl: './modal-photo.component.html'
 })
 export class ModalPhotoComponent implements OnInit {
 

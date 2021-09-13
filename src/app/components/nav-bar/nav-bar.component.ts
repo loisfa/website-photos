@@ -6,13 +6,12 @@ import { Section } from '../../models/business/Section';
 /* Navigation bar of the app
   */
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  selector: 'nav-bar',
+  templateUrl: './nav-bar.component.html'
 })
 export class NavBarComponent implements OnInit {
 
-  @Input() public sectionsList: Array<Section> = [];  // should be private, but AOT compilation fails when private
+  @Input() public sectionsList: Array<Section> = [];
   @Input() public activeSection: Section;
   @Input() public isOpenHamburgerMenu: boolean = false;
 
@@ -58,6 +57,8 @@ export class NavBarComponent implements OnInit {
       this.gallerySection.setClassName(NavBarComponent.sectionOnClass);
       this.activeSection = this.gallerySection;
     }
+
+    this.isOpenHamburgerMenu = false;
   }
 
   public clickedHamburgerMenu(): void {

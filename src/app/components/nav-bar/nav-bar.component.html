@@ -1,17 +1,14 @@
-<div class="center" style="text-align: left;">
-
-  <div class="nav-icon" (click)="clickedHamburgerMenu()">
+<div id="nav-bar">
+  <div class="hamburger-menu-btn" (click)="clickedHamburgerMenu()">
     <img id="hamburger-menu-icon" src="/assets/icons/hamburger-menu.png"/>
   </div>
 
   <div id="side-bar" *ngIf="isOpenHamburgerMenu">
-    <br>
-    <br>
     <div class="section-side-bar" *ngFor="let section of this.sectionsList"
     [routerLink]="section.getRouterLink()" routerLinkActive="active"
     (click)="setSectionsActiveness(section.getRouterLink())">
       {{section.getTitle()}}
-      <img *ngIf="section.getUri()!==undefined"
+      <img *ngIf="section.getImgUri()!==undefined"
       [src]="section.getImgUri()" style="width:20px;" >
       <span *ngIf="section.getRouterLink()==='my-favorites'" style="font-size:14px">
         ({{this.photosHandler.getFavoritePhotos().length}})
@@ -19,7 +16,7 @@
     </div>
   </div>
 
-  <div class="nav-bar">
+  <div class="horizontal-section-titles">
     <div *ngFor="let section of this.sectionsList" [ngClass]="section.getClassName()"
     [routerLink]="section.getRouterLink()" routerLinkActive="active"
     (click)="setSectionsActiveness(section.getRouterLink())">
@@ -30,5 +27,4 @@
       </span>
     </div>
   </div>
-
 </div>

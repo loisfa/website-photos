@@ -9,8 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   */
 @Component({
   selector: 'app-item-favorite-photo',
-  templateUrl: './item-favorite-photo.component.html',
-  styleUrls: ['./item-favorite-photo.component.css']
+  templateUrl: './item-favorite-photo.component.html'
 })
 export class ItemFavoritePhotoComponent implements OnInit {
 

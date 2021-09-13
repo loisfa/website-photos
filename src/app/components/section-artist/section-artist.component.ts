@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
   */
 @Component({
   selector: 'app-section-artist',
-  templateUrl: './section-artist.component.html',
-  styleUrls: ['./section-artist.component.css']
+  templateUrl: './section-artist.component.html'
 })
 export class SectionArtistComponent implements OnInit {
 

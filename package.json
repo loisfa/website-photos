@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
+    "start:server": "node server.js",
     "build": "ng build --prod --build-optimizer --verbose",
+    "build:dev": "ng build",
     "test": "mocha server/test/**/*.spec.js",
     "lint": "ng lint",
     "e2e": "ng e2e",

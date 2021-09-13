@@ -8,8 +8,7 @@ import { ErrorMessage } from '../../models/business/ErrorMessage';
   */
 @Component({
   selector: 'app-modal-error',
-  templateUrl: './modal-error.component.html',
-  styleUrls: ['./modal-error.component.css']
+  templateUrl: './modal-error.component.html'
 })
 export class ModalErrorComponent implements OnInit {
 

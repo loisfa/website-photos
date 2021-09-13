@@ -6,8 +6,7 @@ import { PhotosHandler } from '../../services/PhotosHandler.service';
   */
 @Component({
   selector: 'app-section-my-favorites',
-  templateUrl: './section-my-favorites.component.html',
-  styleUrls: ['./section-my-favorites.component.css']
+  templateUrl: './section-my-favorites.component.html'
 })
 export class SectionMyFavoritesComponent implements OnInit {
 

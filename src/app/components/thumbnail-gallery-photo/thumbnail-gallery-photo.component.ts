@@ -9,8 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   */
 @Component({
   selector: 'app-thumbnail-gallery-photo',
-  templateUrl: './thumbnail-gallery-photo.component.html',
-  styleUrls: ['./thumbnail-gallery-photo.component.css']
+  templateUrl: './thumbnail-gallery-photo.component.html'
 })
 export class ThumbnailGalleryPhotoComponent implements OnInit {
 

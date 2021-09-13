@@ -5,8 +5,7 @@ import { PhotosHandler } from '../../services/PhotosHandler.service';
   */
 @Component({
   selector: 'app-section-gallery',
-  templateUrl: './section-gallery.component.html',
-  styleUrls: ['./section-gallery.component.css']
+  templateUrl: './section-gallery.component.html'
 })
 export class SectionGalleryComponent implements OnInit {
 
