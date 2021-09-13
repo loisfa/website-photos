@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { PhotosHandler } from '../../services/PhotosHandler.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Section } from '../../models/business/Section';
 
 /* Navigation bar of the app

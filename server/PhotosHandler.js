@@ -4,10 +4,10 @@ require('./utils/PhotoUtils.js');
 
 class PhotosHandler {
 
-  constructor(rootDirName, resourcesDirAbsPath, photosRelativePath) {
+  constructor(rootDirName, resourcesPath, photosRelativePath) {
     this.rootDirName = rootDirName;
-    this.resourcesDirAbsPath = resourcesDirAbsPath;
-    this.photosDirAbsPath = resourcesDirAbsPath + photosRelativePath;
+    this.resourcesPath = resourcesPath;
+    this.photosDirAbsPath = resourcesPath + photosRelativePath;
     this.photos = {};
     this.listPhotoIds = [];
     this.fillPhotosAfterScan();
@@ -28,8 +28,8 @@ class PhotosHandler {
     return this.photos;
   }
 
-  getResourcesDirAbsPath() {
-    return this.resourcesDirAbsPath;
+  getresourcesPath() {
+    return this.resourcesPath;
   }
 
   getRootDirName() {
@@ -88,8 +88,8 @@ class PhotosHandler {
   }
 
   removeResourcesDir(path) {
-    console.log("this.resourcesDirAbsPath: " + this.resourcesDirAbsPath);
-    let pathWithoutResourcesDir = path.replace(this.resourcesDirAbsPath, "");
+    console.log("this.resourcesPath: " + this.resourcesPath);
+    let pathWithoutResourcesDir = path.replace(this.resourcesPath, "");
     return pathWithoutResourcesDir;
   }
 

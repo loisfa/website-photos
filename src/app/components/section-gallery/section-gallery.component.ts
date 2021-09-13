@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhotosHandler } from '../../services/PhotosHandler.service';
 
 /* This component is designed for the gallery section.

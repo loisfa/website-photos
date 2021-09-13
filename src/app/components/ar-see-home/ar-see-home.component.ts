@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PhotosHandler } from '../../services/PhotosHandler.service';
-import { Observable } from 'rxjs/Rx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { ErrorMessage } from '../../models/business/ErrorMessage';

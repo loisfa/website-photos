@@ -47,16 +47,16 @@
           </h5>
           <hr>
           <p class="ar-guidelines-text">
-            b. Generate your session CODE:
+            b. Generate your session code:
           </p>
           <button class="btn btn-info cursor-pointer" (click)="clickedGenerateCode()">
-            Generate CODE<br>
+            {{this.sessionCode ? 'Code: ' + this.sessionCode : 'Generate Code'}}
           </button>
           <p class="ar-guidelines-text">
             c. Open the Android app.
           </p>
           <p class="ar-guidelines-text">
-            d. In the app, enter your CODE{{this.sessionCode ? ': ' + this.sessionCode : ''}}.
+            d. In the app, enter your code<span style="color: #138496; font-weight: bold;">{{this.sessionCode ? ': ' + this.sessionCode : ''}}</span>.
           </p>
           <p class="ar-guidelines-text">
             e. In the app, point the camera toward the tracker on the wall.
