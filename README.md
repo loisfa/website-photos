@@ -2,7 +2,8 @@
 
 This repository is part of a multi-device project made of 2 components:
 - a <strong>Responsive Photo Gallery</strong> on which the user can expore and select his favorite photos (this Github repo).
-- an <strong>Augmented Reality Android app</strong> where the user can preview his favorite photo at home with real-dimension. (https://github.com/loisfa/ar-photo-visu). \
+- an <strong>Augmented Reality Android app</strong> where the user can preview his favorite photo at home with real-dimension. (https://github.com/loisfa/ar-photo-visu).
+
 You can find more information on the [Github page of the project](https://loisfa.github.io/website-photos/).
 
 ## Pre-requisites:
