@@ -17,7 +17,7 @@ Run `npm run serve` for a dev server. Navigate to `http://localhost:4200/`. The 
 
 ### Build
 Run `npm run build:dev` to build the project in dev mode (debugging in browser will be possible). 
-Run `npm run build` to build the project in production mode (minified bundle, no debugging in browser will be possible). 
+Run `npm run build:prod` to build the project in production mode (minified bundle, no debugging in browser will be possible). 
 The build artifacts are stored in the `dist/` directory.
 
 ## Backend (Express.js)
